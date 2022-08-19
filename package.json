@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "@chakra-ui/icons": "^2.0.8",
     "@chakra-ui/react": "^2.2.8",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
@@ -14,10 +16,14 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "framer-motion": "^6.5.1",
+    "graphql": "^16.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
+    "react-intersection-observer": "^9.4.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "recoil": "^0.7.5",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },

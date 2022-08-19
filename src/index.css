@@ -1,0 +1,9 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  height: 0;
+  width: 0;
+}

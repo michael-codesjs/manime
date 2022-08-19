@@ -1,9 +1,13 @@
-import { ColorModeScript } from "@chakra-ui/react"
+import { ApolloProvider } from "@apollo/client"
+import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react"
 import * as React from "react"
 import * as ReactDOM from "react-dom/client"
 import { App } from "./App"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
+import client from "./api/client";
+import { BrowserRouter } from "react-router-dom"
+import { RecoilRoot } from "recoil"
 
 
 const container = document.getElementById("root")
@@ -12,8 +16,16 @@ const root = ReactDOM.createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <ColorModeScript />
-    <App />
+    <ApolloProvider client={client}>
+      <RecoilRoot>
+      <BrowserRouter>
+        <ColorModeScript />
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </BrowserRouter>
+      </RecoilRoot>
+    </ApolloProvider>
   </React.StrictMode>,
 )
 
