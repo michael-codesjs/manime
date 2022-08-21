@@ -6,8 +6,11 @@ export default function Search() {
   return (
     <Box
       gridArea={"search"}
-      py={{
-        base: 0,
+      pb={{
+        base: 6,
+        sm: 0
+      }}
+      pt={{
         sm: 6
       }}
       px={6}

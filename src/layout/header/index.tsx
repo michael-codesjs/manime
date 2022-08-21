@@ -31,7 +31,7 @@ export default function Header() {
       }}
 
       borderBottomWidth={{
-        sm: "1px",
+        base: "1px",
         md: "0px"
       }}
     >

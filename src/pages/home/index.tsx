@@ -16,7 +16,6 @@ export default function Home() {
 
   return (
     <>
-      <Trending />
       <Box
         width={"full"}
         height={"auto"}
