@@ -1,73 +1,62 @@
-import * as React from "react"
 import {
   Box,
-  ChakraProvider,
-  HStack,
-  Image,
-  Stack,
-  Text,
-  theme,
-  useColorModeValue,
-  VStack,
-} from "@chakra-ui/react"
-import { useQuery } from "@apollo/client"
-import { GET_CHARACTER, PAGE } from "./api/queries.graphql"
-import Routes from "./Routes";
-import Header from "./layout/header";
+  Grid,
+  useColorModeValue
+} from "@chakra-ui/react";
 import "./index.css";
+import Header from "./layout/header";
 import Navigation from "./layout/navigation";
+import PopularAnime from "./layout/popular-anime";
+// import PopularAnime from "./layout/popular-anime/popular-anime";
 import SidePanel from "./layout/side-panel";
+import Routes from "./Routes";
 
 
-export const App = () => {
-
-  // i know doing this is probably easier with react grid.
-  // TODO: come back and refactor code after learning grid.
+export default function App() {
 
   return (
 
-    <VStack
+    <Grid
       width={"100vw"}
+      gridTemplateAreas={{
+        base: `
+          "header"
+          "main"
+          "nav"
+          "side-panel"
+        `,
+        sm: `
+          "header header header"
+          "nav main main"
+          "side-panel side-panel side-panel"
+        `,
+        md: `
+          "header header header"
+          "nav main side-panel"
+        `
+      }}
+      gridTemplateColumns={{
+        base: "100%",
+        sm: "3fr 5fr",
+        md: "200px 1fr 320px"
+      }}
+      gridTemplateRows={{
+        base: "min-content 1fr",
+        sm: "min-content 1fr",
+        md: "min-content 1fr"
+      }}
       height={"100vh"}
       bg={useColorModeValue("white", "gray.900")}
-      spacing={0}
     >
 
       <Header />
+      <Navigation />
+      <Routes /> {/* main-content */}
+      <SidePanel />
+      <PopularAnime />
 
-      <HStack
-        width={"100vw"}
-        height={"100vh"}
-        spacing={0}
-        bg={useColorModeValue("white", "gray.900")}
-      >
+    </Grid>
 
-        <Navigation />
-
-        <Stack
-          direction={{
-            base: "column",
-            md: "row"
-          }}
-          width={"full"}
-          height={"full"}
-          spacing={0}
-        >
-
-          <Box
-            width={"full"}
-            height={"full"}
-          >
-            <Routes />
-          </Box>
-
-          <SidePanel />
-        </Stack>
-
-      </HStack>
-
-
-    </VStack>
   )
 
 

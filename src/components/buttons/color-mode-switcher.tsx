@@ -1,8 +1,8 @@
 import React from 'react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
-  HStack,
-  IconButton, Text, useColorMode,
+  IconButton,
+  useColorMode,
   useColorModeValue
 } from '@chakra-ui/react';
 
@@ -19,9 +19,9 @@ export default function ColorModeSwitcher() {
       icon={SwitchIcon}
       size={"sm"}
       borderRadius={"full"}
-      bg={useColorModeValue("white", "gray.700")}
+      bg={useColorModeValue("white", "none")}
       color={useColorModeValue("gray.800", "gray.100")}
-      borderWidth={useColorModeValue("1px","0px")}
+      borderWidth={"1px"}
       onClick={toggleColorMode}
     />
   )

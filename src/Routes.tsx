@@ -1,5 +1,7 @@
+import { Box, VStack } from "@chakra-ui/react";
 import React from "react";
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import PopularAnime from "./layout/popular-anime";
 import Home from "./pages/home";
 import { paths } from "./utilities/constants";
 // import AddAlarm from "./pages/Alarm/Add"
@@ -8,8 +10,15 @@ import { paths } from "./utilities/constants";
 
 export default function () {
   return (
-    <Routes>
-      <Route path={paths.home} element={<Home />} />
-    </Routes>
+    <VStack
+      as={"main"}
+      gridArea={"main"}
+      spacing={6}
+      py={6}
+    >
+      <Routes>
+        <Route path={paths.home} element={<Home />} />
+      </Routes>
+    </VStack>
   )
 }

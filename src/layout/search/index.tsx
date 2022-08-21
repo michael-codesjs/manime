@@ -1,23 +1,14 @@
+import { Box, Icon, Input, InputGroup, InputLeftElement, useColorModeValue } from "@chakra-ui/react";
 import { RiSearch2Line } from "react-icons/ri";
-import { Box, Icon, Button, IconButton, Input, InputGroup, InputLeftElement, InputRightAddon, InputRightElement, Menu, MenuButton, useColorModeValue, MenuList, Text, VStack, Divider } from "@chakra-ui/react";
-import { GoSettings } from "react-icons/go";
 
 export default function Search() {
 
   return (
     <Box
-      width={{
-        base: "full",
-        md: "300px"
-      }}
-      minW={{
-        base: "full",
-        md: "300px"
-      }}
-      height={"full"}
+      gridArea={"search"}
       py={{
         base: 0,
-        md: 6
+        sm: 6
       }}
       px={6}
       borderLeftWidth={{
@@ -56,34 +47,6 @@ export default function Search() {
             color: useColorModeValue("gray.400", "gray.200")
           }}
         />
-        <InputRightElement>
-          <Menu>
-            <MenuButton
-              as={Button}
-              variant={"unstyled"}
-            >
-              <Icon
-                as={GoSettings}
-                width={"14px"}
-                height={"14px"}
-              />
-            </MenuButton>
-            <MenuList
-              as={VStack}
-              align={"start"}
-              justify={"start"}
-              spacing={2}
-              p={3}
-            >
-              <Text
-                fontWeight={"semibold"}
-                fontSize={"xs"}
-                color={useColorModeValue("gray.600","gray.300")}
-              > Search Filters </Text>
-              <Divider />
-            </MenuList>
-          </Menu>
-        </InputRightElement>
       </InputGroup>
     </Box>
   )

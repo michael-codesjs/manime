@@ -1,8 +1,7 @@
 
 import React, { useMemo } from "react";
-import { Text, useBreakpointValue, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorModeValue, VStack } from "@chakra-ui/react";
 import NavigationItem from "./item";
-import { IoIosHome } from "react-icons/io";
 import { AiOutlineHome, AiOutlineGlobal, AiOutlineSound, AiOutlineBook, AiOutlineClockCircle, AiOutlineDownload } from "react-icons/ai";
 import { MdOndemandVideo, MdVideoLibrary } from "react-icons/md";
 import { paths } from "../../utilities/constants";
@@ -37,9 +36,10 @@ export default function Navigation() {
   const mainTextColor = useColorModeValue("gray.900", "gray.100");
 
   const NAVIGATION_CONTENT = useMemo(() => {
-    return Object.entries(navigationItems).map(([subNavigation, items]) => {
+    return Object.entries(navigationItems).map(([subNavigationItem, subNavigationItems]) => {
       return (
         <VStack
+          key={subNavigationItem}
           justify={"start"}
           align={"start"}
           spacing={7}
@@ -51,7 +51,7 @@ export default function Navigation() {
             color={mainTextColor}
             fontWeight={"semibold"}
             textTransform={"uppercase"}
-          > {subNavigation} </Text>
+          > {subNavigationItem} </Text>
 
           <VStack
             width={"full"}
@@ -61,9 +61,9 @@ export default function Navigation() {
             spacing={3}
           >
             {
-              Object.entries(items).map(([name, args]) => {
+              Object.entries(subNavigationItems).map(([name, args]) => {
                 return (
-                  <NavigationItem name={name} {...args} />
+                  <NavigationItem key={name} name={name} {...args} />
                 )
               })
             }
@@ -75,29 +75,79 @@ export default function Navigation() {
   }, [navigationItems]);
 
   return (
-    <VStack
-      minW={"220px"}
-      width={"220px"}
+    <Flex
+      gridArea={"nav"}
+      borderRightWidth={"1px"}
       position={{
-        base: "fixed",
-        md: "relative",
+        base: "absolute",
+        sm: "relative"
       }}
       top={0}
-      right={{
-        base: navigationIsOpen ? 0 : "-250px",
-        md: 0
+      bottom={0}
+      left={0}
+      right={0}
+      overflow={"hidden"}
+      backdropFilter={"blur(2px)"}
+      zIndex={{
+        base: navigationIsOpen ? 10 : -1,
+        sm: 1
       }}
-      bg={useColorModeValue("white","gray.900")}
+      opacity={{
+        base: navigationIsOpen ? 1 : 0,
+        sm: 1
+      }}
       transition={"all"}
-      transitionDuration={"0.3s"}
-      py={6}
-      height={"full"}
-      justify={"start"}
-      spacing={8}
-      borderRightWidth={"1px"}
+      transitionDuration={"0.2s"}
     >
-      {NAVIGATION_CONTENT}
-    </VStack>
+
+      <Box
+        width={"full"}
+        height={"full"}
+        display={{ base: "block", sm: "none" }}
+        bg={"blackAlpha.500"}
+        onClick={
+          () => setNavigationIsOpen(false)
+        }
+      />
+
+      <VStack
+        as={"nav"}
+        width={{
+          base: "280px",
+          md: "full"
+        }}
+        height={"full"}
+        py={6}
+        spacing={8}
+        justify={"start"}
+        bg={{
+          base: useColorModeValue("white", "gray.800"),
+          sm: "none"
+        }}
+        position={{
+          base: "fixed",
+          sm: "relative"
+        }}
+        right={{
+          base: navigationIsOpen ? "0px" : "-280px",
+          sm: 0
+        }}
+        transition={{
+          base: "all",
+          sm: "none"
+        }}
+        transitionDuration={"0.3s"}
+        onClick={
+          // override onclick so it does not close when you click the inside.
+          () => {
+            console.log("override")
+          }
+        }
+      >
+        {NAVIGATION_CONTENT}
+      </VStack>
+
+    </Flex>
   )
 
 }

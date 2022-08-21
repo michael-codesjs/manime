@@ -1,13 +1,28 @@
-import { ApolloProvider } from "@apollo/client"
-import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react"
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react"
 import * as React from "react"
 import * as ReactDOM from "react-dom/client"
-import { App } from "./App"
+import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
-import client from "./api/client";
 import { BrowserRouter } from "react-router-dom"
 import { RecoilRoot } from "recoil"
+import { theme } from "./utilities/theme";
+import { Amplify } from "aws-amplify";
+import queryClient from "./api/client"
+import { QueryClientProvider } from "react-query"
+
+
+Amplify.configure({
+
+  Auth: {
+    mandatorySignIn: false,
+  },
+
+  API: {
+    graphql_endpoint: "https://graphql.anilist.co"
+  }
+
+});
 
 
 const container = document.getElementById("root")
@@ -16,16 +31,16 @@ const root = ReactDOM.createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <QueryClientProvider client={queryClient}>
       <RecoilRoot>
-      <BrowserRouter>
-        <ColorModeScript />
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
-      </BrowserRouter>
+        <BrowserRouter>
+          <ColorModeScript />
+          <ChakraProvider theme={theme}>
+            <App />
+          </ChakraProvider>
+        </BrowserRouter>
       </RecoilRoot>
-    </ApolloProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
 

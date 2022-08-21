@@ -1,5 +1,5 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Heading, HStack, IconButton, Image, Spacer, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading, HStack, IconButton, Image, Spacer, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
 import ColorModeSwitcher from "../../components/buttons/color-mode-switcher";
 import { navigationIsOpenAtom } from "../../data/atoms";
@@ -12,76 +12,85 @@ export default function Header() {
   const setNavigationIsOpen = useSetRecoilState(navigationIsOpenAtom);
 
   return (
-    <Stack
-      direction={{
-        base: "column",
-        md: "row"
-      }}
+    <Grid
       as={"header"}
-      width={"full"}
-      align={"center"}
-      justify={"center"}
-      spacing={{
-        base: 0,
-        md: 6
+      gridArea={"header"}
+      templateAreas={{
+        base: `
+          "brand extras"
+          "search search"
+        `,
+        sm: `
+          "brand extras search"
+        `
       }}
-    // borderBottomWidth={"1px"}
+      gridTemplateColumns={{
+        base: "repeat(2,1fr)",
+        sm: "1fr 1fr 2fr",
+        md: "200px auto 320px"
+      }}
+
+      borderBottomWidth={{
+        sm: "1px",
+        md: "0px"
+      }}
     >
 
       <HStack
-        width={"full"}
-        align={"center"}
-        spacing={3}
+        gridArea={"brand"}
+        borderRightWidth={{
+          base: "0px",
+          md: "1px"
+        }}
+        p={6}
       >
-        <HStack
-          width={"220px"}
-          borderRightWidth={{
-            base: "0px",
-            md: "1px"
+        <Image
+          src={"/anime-logo.jpg"}
+          width={{
+            base: "30px",
           }}
-          p={6}
-        >
-          <Image
-            src={"/anime-logo.jpg"}
-            width={{
-              base: "30px",
-            }}
-            height={{
-              base: "30px",
-            }}
-            borderRadius={"full"}
-            objectFit={"cover"}
-          />
-          <Text
-            fontSize={"2xl"}
-            fontWeight={"bold"}
-            letterSpacing={"1.2px"}
-            color={useColorModeValue("gray.800", "gray.50")}
-          > anime </Text>
-        </HStack>
-        <Spacer />
-        <HStack
-          spacing={6}
-          p={6}
-        >
-          <ColorModeSwitcher />
-          <IconButton
-            aria-label="menu-button"
-            icon={<HamburgerIcon />}
-            size={"sm"}
-            onClick={() => setNavigationIsOpen(isOpen => !isOpen)}
-            display={{
-              base: "block",
-              md: "none"
-            }}
-          />
-        </HStack>
+          height={{
+            base: "30px",
+          }}
+          borderRadius={"full"}
+          objectFit={"cover"}
+        />
+        <Text
+          fontSize={"2xl"}
+          fontWeight={"bold"}
+          letterSpacing={"1.2px"}
+          color={useColorModeValue("gray.800", "gray.50")}
+        > anime </Text>
+      </HStack>
+
+      <HStack
+        gridArea={"extras"}
+        spacing={4}
+        p={6}
+      >
+        <Box
+          id={"header-content-portal-container"}
+          width={"full"}
+          height={"full"}
+          // use this via a portal for all your extra content like tabs.
+          // on bigger screens that is.
+        />
+        <ColorModeSwitcher />
+        <IconButton
+          aria-label="menu-button"
+          icon={<HamburgerIcon />}
+          size={"sm"}
+          onClick={() => setNavigationIsOpen(isOpen => !isOpen)}
+          display={{
+            base: "block",
+            sm: "none"
+          }}
+        />
       </HStack>
 
       <Search />
 
-
-    </Stack>
+    </Grid>
   )
 
 }

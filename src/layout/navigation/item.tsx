@@ -1,8 +1,10 @@
-import { Box, Flex, HStack, Icon, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, HStack, Icon, Text, useBreakpointValue, useColorModeValue, VStack } from "@chakra-ui/react";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { IoMdClock, IoMdAlarm } from "react-icons/io"
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { IoMdAlarm } from "react-icons/io"
 import { AiOutlineClockCircle } from "react-icons/ai"
+import { useSetRecoilState } from "recoil";
+import { navigationIsOpenAtom } from "../../data/atoms";
 
 interface NavigationItemProps {
   name: string,
@@ -15,13 +17,22 @@ export const NAVIGATION_ICONS = [IoMdAlarm, AiOutlineClockCircle]
 
 export default function NavigationItem({ name, address, icon }: NavigationItemProps): React.ReactElement {
 
+  const setNavigationIsOpen = useSetRecoilState(navigationIsOpenAtom);
+
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const isActive = pathname === address;;
 
   return (
     <HStack
       as={Link}
       to={address}
+      onClick={
+        useBreakpointValue({
+          base: () => setNavigationIsOpen(false),
+          md: undefined
+        })
+      }
       spacing={5}
       width={"full"}
       color={useColorModeValue(isActive ? "red" : "gray.800", isActive ? "red" : "gray.100")}
@@ -29,8 +40,8 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
     >
       <Icon
         as={icon}
-        width={"16px"}
-        height={"16px"}
+        width={"18px"}
+        height={"18px"}
       />
 
       <Text
@@ -38,7 +49,7 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
         fontSize={"xs"}
         fontWeight={isActive ? "semibold" : "normal"}
         textTransform={"capitalize"}
-        color={useColorModeValue(isActive ? "red" : "gray.600", isActive ? "red" : "gray.200")}
+        color={useColorModeValue(isActive ? "red" : "gray.600", isActive ? "red" : "gray.300")}
       > {name} </Text>
 
       <Box
