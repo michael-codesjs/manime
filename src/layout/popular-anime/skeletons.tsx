@@ -1,10 +1,15 @@
-import { Stack, VStack } from "@chakra-ui/react";
+import { Stack, useColorModeValue, VStack } from "@chakra-ui/react";
 import React from "react";
 import { Skeletons as CustomSkeletons } from "../../components/skeletons";
 
 export default function Skeletons() {
+
+  const containerBorderColor = useColorModeValue("gray.50","gray.900");
+  const containerBgColor = useColorModeValue("none","gray.700");
+
   const skeletons = [];
   const numberOfSkeletons = 6;
+  
   for (let x = 0; x < numberOfSkeletons; x++) {
     skeletons.push(
       <Stack
@@ -14,8 +19,26 @@ export default function Skeletons() {
           md: "row"
         }}
         width={"full"}
-        minW={"180px"}
+        minW={"220px"}
         spacing={4}
+        p={{
+          base: 4,
+          md: 0
+        }}
+        borderWidth={{
+          base: "1px",
+          md: "0px"
+        }}
+        borderColor={containerBorderColor}
+        boxShadow={{
+          base: "xs",
+          md: "none"
+        }}
+        bg={{
+          base: containerBgColor,
+          md: "none"
+        }}
+        borderRadius={"8px"}
       >
         <CustomSkeletons
           count={1}
@@ -25,14 +48,14 @@ export default function Skeletons() {
           }}
           minW={"80px"}
           height={{
-            base: "200px",
+            base: "150px",
             md: "90px"
           }}
           borderRadius={"xl"}
         />
         <VStack
           width={"full"}
-          height={"full"}
+          height={"auto"}
           align={"start"}
           spacing={2}
         >

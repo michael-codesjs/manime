@@ -138,6 +138,7 @@ export default function View() {
               base: 0,
               md: 8
             }}
+            p={"1px"}
             {
             ...useBreakpointValue({
               md: {

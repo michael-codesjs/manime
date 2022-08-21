@@ -1,7 +1,9 @@
 import { Box, Center, Image, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react"
 import React from "react"
+import { Link, useNavigate } from "react-router-dom"
 import PlayButton from "../../components/buttons/play"
 import { Media } from "../../types/api"
+import { paths } from "../../utilities/constants"
 
 type Props = {
   media: Media
@@ -9,9 +11,9 @@ type Props = {
 
 export function Anime({ media }: Props) {
 
-  const title = (media.title?.english || media.title?.romaji || media.title?.native)!;
+  const navigate = useNavigate();
 
-  console.log(media)
+  const title = (media.title?.english || media.title?.romaji || media.title?.native)!;
 
   return (
     <Stack
@@ -22,38 +24,56 @@ export function Anime({ media }: Props) {
         md: "row"
       }}
       width={"full"}
-      minW={"180px"}
-      spacing={4}
+      minW={"220px"}
+      spacing={{
+        base: 4,
+        md: 4
+      }}
+      p={{
+        base: 4,
+        md: 0
+      }}
       borderWidth={{
         base: "1px",
         md: "0px"
       }}
+      borderColor={useColorModeValue("gray.50","gray.900")}
       boxShadow={{
         base: "xs",
         md: "none"
       }}
-      borderRadius={"lg"}
+      bg={{
+        base: useColorModeValue("none","gray.700"),
+        md: "none"
+      }}
+      borderRadius={"8px"}
     >
 
       {/* anime cover image */}
       <Box
         aria-label={"anime-cover"}
         backgroundColor={media.coverImage?.color!}
+        cursor={"pointer"}
         width={{
           base: "full",
           md: "80px",
         }}
         minW={"80px"}
         height={{
-          base: "120px",
+          base: "150px",
           md: "90px"
         }}
         position={"relative"}
         overflow={"clip"}
-        borderRadius={"inherit"}
+        borderRadius={"lg"}
+        onClick={
+          () => {
+            navigate(paths.anime+"/"+media.id)
+          }
+        }
       >
         <Image
-          src={media.coverImage?.medium!}
+          src={media.coverImage?.large!}
           alt={title + " cover"}
           position={"absolute"}
           width={"full"}
@@ -74,7 +94,12 @@ export function Anime({ media }: Props) {
             backgroundSize: "120%"
           }}
         >
-          <PlayButton />
+          <PlayButton
+            onClick={
+              () => {
+                navigate(paths.anime+"/"+media.id+"#play")
+              }
+            }/>
         </Center>
       </Box>
 
@@ -82,13 +107,11 @@ export function Anime({ media }: Props) {
         width={"full"}
         align={"start"}
         spacing={2}
-        p={{
-          base: 4,
-          md: 0
-        }}
       >
         <Box>
           <Text
+            as={Link}
+            to={paths.anime+"/"+media.id}
             fontSize={{
               base: "13px",
               // md: "14px"
@@ -113,6 +136,12 @@ export function Anime({ media }: Props) {
           fontSize={"10px"}
           color={useColorModeValue("gray.600", "gray.300")}
           fontWeight={"medium"}
+          cursor={"pointer"}
+          onClick={
+            () => {
+              navigate(paths.anime+"/"+media.id+"#episodes")
+            }
+          }
         >
           {media.episodes || 0} episode{media.episodes! == 1 ? "": "s"}
         </Text>
