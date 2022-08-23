@@ -1,5 +1,5 @@
 import { VStack } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, useTransition } from "react";
 import { useSetRecoilState } from "recoil";
 import { sidePanelDidRenderAtom } from "../../data/atoms";
 
@@ -11,10 +11,13 @@ export default function SidePanel() {
    */
 
   const setSidePanelDidRender = useSetRecoilState(sidePanelDidRenderAtom);
+  const [,startTransition] = useTransition();
 
   useEffect(() => {
-    setSidePanelDidRender(true);
-  },[]);
+    startTransition(() => {
+      setSidePanelDidRender(true);
+    });
+  },[startTransition]);
 
   return (
     <VStack

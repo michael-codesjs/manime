@@ -6,7 +6,7 @@ import ScrollFade from "../../../components/scroll-fade";
 import { useInfiniteQuery } from "react-query";
 import { getPopular } from "../../../api/queries";
 import { Content } from "./content";
-import { Profiler, useEffect, useId } from "react";
+import { Profiler, useEffect, useId, useMemo } from "react";
 import { profilerCallBack } from "../../../profilers";
 
 export function PopularAnime() {
@@ -31,9 +31,13 @@ export function PopularAnime() {
     refetchOnWindowFocus: false
   });
 
-  useEffect(() => {
-    console.log(status);
-  }, [status]);
+  const memoizedContent = useMemo(() => {
+    return data && <Content data={data} />;
+  },[data]);
+
+  const memoizedSkeletons = useMemo(() => {
+    return isFetching && <Skeletons />;
+  },[isFetching]);
 
   return (
     <VStack
@@ -132,8 +136,8 @@ export function PopularAnime() {
             }}
             p={"1px"}
           >
-            {data && <Content data={data} />}
-            {isFetching && <Skeletons />}
+            {memoizedContent}
+            {memoizedSkeletons}
           </Stack>
           <SeeMoreButton />
         </Stack>

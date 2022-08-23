@@ -1,5 +1,5 @@
 import { HStack, Icon, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
-import React from "react";
+import React, { useTransition } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoMdAlarm } from "react-icons/io"
 import { AiOutlineClockCircle } from "react-icons/ai"
@@ -21,15 +21,13 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [, startTransition] = useTransition();
   const isActive = pathname === address;
 
   /* postLinkClick: on mobile devices, you'll want to close the navigation when a link is clicked */
-  const postLinkClick = useBreakpointValue({
-    base: () => {
-      setNavigationIsOpen(false);
-    },
-    sm: undefined
-  });
+  const postLinkClick = () => {
+    setNavigationIsOpen(false);
+  };
 
   return (
     <HStack
@@ -58,7 +56,7 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
         textTransform="capitalize"
         color="inherit"
       > {name} </Text>
-      
+
     </HStack>
   )
 }
