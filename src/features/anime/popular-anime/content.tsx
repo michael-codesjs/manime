@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, Profiler } from "react";
 import { UseInfiniteQueryResult } from "react-query";
 import { Page } from "../../../types/api";
 import { Anime } from "./anime";
@@ -7,8 +7,6 @@ type InfiniteQueryResult = UseInfiniteQueryResult<Page, any>;
 
 type Props = {
   data: InfiniteQueryResult["data"],
-  hasNextPage: InfiniteQueryResult["hasNextPage"],
-  fetchNextPage: InfiniteQueryResult["fetchNextPage"]
 }
 
 export function Content(props: Props) {
@@ -17,21 +15,29 @@ export function Content(props: Props) {
 
   return (
     <>
-      {
-        data.pages.map(page => {
-          return (
-            <Fragment key={page.pageInfo!.currentPage}>
-              {
-                page.media!.map((media) => {
-                  return (
-                    <Anime key={media!.id} media={media!} />
-                  )
-                })
-              }
-            </Fragment>
-          )
-        })
-      }
+      <Profiler
+        id={"popular-anime-card-profiler"}
+        onRender={(...args) => {
+          const [,phase] = args;
+          // console.log(phase);
+        }}
+      >
+        {
+          data.pages.map((page,i) => {
+            return (
+              <Fragment key={i}>
+                {
+                  page.media!.map((media) => {
+                    return (
+                      <Anime key={media!.id} media={media!} />
+                    )
+                  })
+                }
+              </Fragment>
+            )
+          })
+        }
+      </Profiler>
     </>
   )
 }

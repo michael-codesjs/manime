@@ -3,7 +3,7 @@ import { QueryFunctionContext } from "react-query";
 import { PageResult } from "../../types";
 import { Page } from "../../types/api";
 
-export const getPopular = async (context: QueryFunctionContext<["popular", { page: number, perPage: number }]>) => {
+export const getPopular = async (context: QueryFunctionContext<[string, { page: number, perPage: number }]>) => {
 
   const [, { page, perPage }] = context.queryKey;
   const result = await (

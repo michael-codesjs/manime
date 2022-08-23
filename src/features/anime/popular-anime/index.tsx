@@ -6,47 +6,59 @@ import ScrollFade from "../../../components/scroll-fade";
 import { useInfiniteQuery } from "react-query";
 import { getPopular } from "../../../api/queries";
 import { Content } from "./content";
+import { Profiler, useEffect, useId } from "react";
+import { profilerCallBack } from "../../../profilers";
 
 export function PopularAnime() {
 
   const {
     isFetching,
-    // isError,
+    status,
     data,
-    hasNextPage,
-    fetchNextPage
-  } = useInfiniteQuery(["popular", { page: 1, perPage: 12 }], getPopular, {
+  } = useInfiniteQuery(["popular-anime", { page: 1, perPage: 12 }], getPopular, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
+    notifyOnChangeProps: [
+      // we are only interested in in 3 states
+      "data",
+      "isError"
+    ],
+    refetchInterval: 0,
+    retry: false,
+    retryOnMount: true,
     retryDelay: 0,
     refetchOnWindowFocus: false
   });
 
+  useEffect(() => {
+    console.log(status);
+  }, [status]);
+
   return (
     <VStack
-      width={"full"}
+      width="full"
       spacing={{
         base: 4,
         md: 2
       }}
       p={0}
-      align={"start"}
-      justify={"start"}
+      align="start"
+      justify="start"
     >
 
       <HStack
-        width={"full"}
-        justify={"space-between"}
+        width="full"
+        justify="space-between"
         px={{
           base: 7,
           md: 0
         }}
       >
         <Text
-          width={"full"}
-          fontSize={"lg"}
-          fontWeight={"semibold"}
+          width="full"
+          fontSize="lg"
+          fontWeight="semibold"
           color={useColorModeValue("gray.800", "gray.200")}
         > Popular Anime </Text>
         <Menu>
@@ -75,15 +87,15 @@ export function PopularAnime() {
           base: 6,
           md: 3
         }}
-        width={"full"}
-        position={"relative"}
+        width="full"
+        position="relative"
       >
         <Stack
           direction={{
             base: "row",
             md: "column"
           }}
-          width={"full"}
+          width="full"
           overflowX={{
             base: "scroll",
             md: "hidden"
@@ -119,59 +131,12 @@ export function PopularAnime() {
               md: 8
             }}
             p={"1px"}
-            {
-            ...useBreakpointValue({
-              md: {
-                overflowY: "scroll"
-              }
-            })
-            }
           >
-            {isFetching ? <Skeletons /> : <Content data={data} hasNextPage={hasNextPage} fetchNextPage={fetchNextPage} />}
+            {isFetching && <Skeletons />}
+            {data && <Content data={data} />}
           </Stack>
-          <ScrollFade
-            direction={useBreakpointValue({
-              base: "to left",
-              md: "to bottom"
-            })!}
-            height={{
-              base: "full",
-              md: 7
-            }}
-            width={{
-              base: 7,
-              md: "full"
-            }}
-            left={0}
-            display={{
-              base: "block",
-              md: "none"
-            }}
-          />
           <SeeMoreButton />
         </Stack>
-        <ScrollFade
-          direction={useBreakpointValue({
-            base: "to right",
-            md: "to bottom"
-          })!}
-          height={{
-            base: "full",
-            md: "36px"
-          }}
-          width={{
-            base: "32px",
-            md: "full"
-          }}
-          right={{
-            base: "0px",
-            md: ""
-          }}
-          bottom={{
-            base: "0px",
-            md: "46px"
-          }}
-        />
       </Stack>
     </VStack>
   )
