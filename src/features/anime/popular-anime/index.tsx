@@ -15,7 +15,7 @@ export function PopularAnime() {
     isFetching,
     status,
     data,
-  } = useInfiniteQuery(["popular-anime", { page: 1, perPage: 12 }], getPopular, {
+  } = useInfiniteQuery(["popular-anime", { page: 1, perPage: 6 }], getPopular, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
