@@ -8,8 +8,8 @@ export default function Header() {
 
   return (
     <Grid
-      as={"header"}
-      gridArea={"header"}
+      as="header"
+      gridArea="header"
       templateAreas={{
         base: `
           "brand extras"
@@ -31,7 +31,7 @@ export default function Header() {
     >
 
       <HStack
-        gridArea={"brand"}
+        gridArea="brand"
         borderRightWidth={{
           base: "0px",
           md: "1px"
@@ -39,31 +39,31 @@ export default function Header() {
         p={6}
       >
         <Image
-          src={"/anime-logo.jpg"}
-          alt={"logo"}
-          width={"30px"}
-          minW={"30px"}
-          height={"30px"}
-          rounded={"full"}
-          objectFit={"cover"}
+          src="/anime-logo.jpg"
+          alt="logo"
+          width="30px"
+          minW="30px"
+          height="30px"
+          rounded="full"
+          objectFit="cover"
         />
         <Text
-          fontSize={"3xl"}
-          fontWeight={"bold"}
-          letterSpacing={"1.2px"}
+          fontSize="3xl"
+          fontWeight="bold"
+          letterSpacing="1.2px"
           color={useColorModeValue("gray.800", "gray.50")}
         > anime </Text>
       </HStack>
 
       <HStack
-        gridArea={"extras"}
+        gridArea="extras"
         spacing={4}
         p={6}
       >
         <Box
-          id={"header-portal-container"}
-          width={"full"}
-          height={"full"}
+          id="header-portal-container"
+          width="full"
+          height="full"
           // on larger screens use this via a portal for all your extra content like tabs.
         />
         <ColorModeSwitcher />

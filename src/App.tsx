@@ -15,8 +15,8 @@ export default function App() {
 
   return (
     <Grid
-      width={"100vw"}
-      minHeight={"100vh"}
+      width="100vw"
+      minHeight="100vh"
       gridTemplateAreas={{
         base: `
           "header"

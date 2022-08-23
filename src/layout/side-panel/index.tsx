@@ -18,10 +18,11 @@ export default function SidePanel() {
 
   return (
     <VStack
-      as={"aside"}
-      gridArea={"side-panel"}
+      as="aside"
+      gridArea="side-panel"
+      id={"side-panel"}
+      justify="start"
       px={6}
-      justify={"start"}
       spacing={8}
       borderLeftWidth={{
         base: "0px",
@@ -30,7 +31,6 @@ export default function SidePanel() {
       overflowY={{
         md: "scroll"
       }}
-      id={"side-panel"}
     />
   )
 

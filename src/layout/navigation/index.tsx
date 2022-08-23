@@ -77,8 +77,8 @@ export default function Navigation() {
 
   return (
     <Flex
-      gridArea={"navigation"}
-      borderRightWidth={"1px"}
+      gridArea="navigation"
+      borderRightWidth="1px"
       position={{
         base: "fixed",
         sm: "relative"
@@ -87,7 +87,7 @@ export default function Navigation() {
       bottom={0}
       right={0}
       left={0}
-      backdropFilter={"blur(2px)"}
+      backdropFilter="blur(2px)"
       zIndex={{
         base: navigationIsOpen ? 10 : -1,
         sm: 1
@@ -96,30 +96,30 @@ export default function Navigation() {
         base: navigationIsOpen ? 1 : 0,
         sm: 1
       }}
-      transition={"all"}
-      transitionDuration={"0.3s"}
+      transition="all"
+      transitionDuration="0.3s"
     >
 
       <Box
-        width={"full"}
-        height={"full"}
+        width="full"
+        height="full"
         display={{ base: "block", sm: "none" }}
-        bg={"blackAlpha.500"}
+        bg="blackAlpha.500"
         onClick={
           () => setNavigationIsOpen(false)
         }
       />
 
       <VStack
-        as={"nav"}
+        as="nav"
         width={{
           base: "280px",
           md: "full"
         }}
-        height={"full"}
+        height="full"
         py={6}
         spacing={8}
-        justify={"start"}
+        justify="start"
         bg={{
           base: useColorModeValue("white", "gray.800"),
           sm: "none"
@@ -136,23 +136,23 @@ export default function Navigation() {
           base: "all",
           sm: "none"
         }}
-        transitionDuration={"0.3s"}
+        transitionDuration="0.3s"
       >
 
         {NAVIGATION_CONTENT}
 
         <HStack
-          width={"full"}
+          width="full"
           display={{ base: "flex", sm: "none" }}
           order={-1}
-          transform={"translateY(-32px)"}
+          transform="translateY(-32px)"
           px={6}
         >
           <Spacer />
           <IconButton
             aria-label="close-navigation-button"
-            variant={"unstyled"}
-            size={"lg"}
+            variant="unstyled"
+            size="lg"
             icon={<CloseIcon />}
             onClick={() => setNavigationIsOpen(false)}
           />

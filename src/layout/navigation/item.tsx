@@ -1,6 +1,6 @@
-import { Box, HStack, Icon, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
+import { HStack, Icon, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoMdAlarm } from "react-icons/io"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { useSetRecoilState } from "recoil";
@@ -19,6 +19,7 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
 
   const setNavigationIsOpen = useSetRecoilState(navigationIsOpenAtom);
 
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const isActive = pathname === address;
 
@@ -32,29 +33,30 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
 
   return (
     <HStack
-      as={Link}
-      to={address}
-      onClick={postLinkClick}
+      onClick={() => {
+        postLinkClick && postLinkClick();
+        navigate(address);
+      }}
       spacing={5}
       py={1}
-      width={"full"}
-      align={"center"}
-      justify={"center"}
+      width="full"
+      align="center"
+      justify="center"
       color={useColorModeValue(isActive ? "red" : "gray.800", isActive ? "red" : "gray.100")}
-      position={"relative"}
+      position="relative"
     >
       <Icon
         as={icon}
-        width={"20px"}
-        height={"20px"}
+        width="20px"
+        height="20px"
       />
 
       <Text
-        width={"full"}
-        fontSize={"13px"}
+        width="full"
+        fontSize="13px"
         fontWeight={isActive ? "semibold" : "normal"}
-        textTransform={"capitalize"}
-        color={"inherit"}
+        textTransform="capitalize"
+        color="inherit"
       > {name} </Text>
       
     </HStack>
