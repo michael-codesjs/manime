@@ -132,8 +132,8 @@ export function PopularAnime() {
             }}
             p={"1px"}
           >
-            {isFetching && <Skeletons />}
             {data && <Content data={data} />}
+            {isFetching && <Skeletons />}
           </Stack>
           <SeeMoreButton />
         </Stack>
