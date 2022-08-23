@@ -1,10 +1,20 @@
-import { Box, VStack } from "@chakra-ui/react";
-import PopularAnime from "../popular-anime";
-
-
+import { VStack } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+import { sidePanelDidRenderAtom } from "../../data/atoms";
 
 export default function SidePanel() {
 
+  /*
+   * we'll need to let other components know when we have been rendered.
+   * this is so that they can use the portal container.
+   */
+
+  const setSidePanelDidRender = useSetRecoilState(sidePanelDidRenderAtom);
+
+  useEffect(() => {
+    setSidePanelDidRender(true);
+  },[]);
 
   return (
     <VStack
@@ -17,16 +27,11 @@ export default function SidePanel() {
         base: "0px",
         md: "1px"
       }}
-      overflowY={"scroll"}
-    >
-      <Box
-        width={"full"}
-        height={"full"}
-        p={0}
-        id={"popuplar-anime-portal-container-side-panel"}
-        // popular animes are rendered here via a portal on large devices
-      />   
-    </VStack>
+      overflowY={{
+        md: "scroll"
+      }}
+      id={"side-panel"}
+    />
   )
 
 }

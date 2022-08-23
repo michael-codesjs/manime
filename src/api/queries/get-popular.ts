@@ -27,7 +27,7 @@ const GRAPHQL_QUERY = `
         lastPage
         hasNextPage
       }
-      media(search: $search, type: ANIME, sort: POPULARITY) {
+      media(search: $search, type: ANIME, sort: POPULARITY_DESC) {
         id
         title {
           romaji
@@ -43,6 +43,14 @@ const GRAPHQL_QUERY = `
           large
           medium
           color
+        }
+        startDate {
+          month
+          year
+        }
+        endDate {
+          month
+          year
         }
         episodes
         type

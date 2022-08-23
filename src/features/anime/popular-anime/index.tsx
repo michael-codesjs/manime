@@ -1,18 +1,13 @@
 import { HStack, Icon, Menu, MenuButton, MenuList, Stack, Text, useBreakpointValue, useColorModeValue, VStack } from "@chakra-ui/react";
 import { HiDotsVertical } from "react-icons/hi";
 import Skeletons from "./skeletons";
-import SeeMoreButton from "../../components/buttons/see-more";
-import ScrollFade from "../../components/scroll-fade";
-import { useInfiniteQuery, UseInfiniteQueryResult } from "react-query";
-import { Page } from "../../types/api";
-import { getPopular } from "../../api/queries";
-import Content from "./content";
+import SeeMoreButton from "../../../components/buttons/see-more";
+import ScrollFade from "../../../components/scroll-fade";
+import { useInfiniteQuery } from "react-query";
+import { getPopular } from "../../../api/queries";
+import { Content } from "./content";
 
-type Props = {
-  result: UseInfiniteQueryResult<Page, unknown>
-}
-
-export default function View() {
+export function PopularAnime() {
 
   const {
     isFetching,
@@ -20,8 +15,12 @@ export default function View() {
     data,
     hasNextPage,
     fetchNextPage
-  } = useInfiniteQuery(["popular", { page: 1, perPage: 10 }], getPopular, {
+  } = useInfiniteQuery(["popular", { page: 1, perPage: 12 }], getPopular, {
     enabled: true,
+    cacheTime: Infinity,
+    refetchOnMount: false,
+    retryDelay: 0,
+    refetchOnWindowFocus: false
   });
 
   return (
@@ -31,9 +30,9 @@ export default function View() {
         base: 4,
         md: 2
       }}
+      p={0}
       align={"start"}
       justify={"start"}
-      p={0}
     >
 
       <HStack
@@ -54,8 +53,8 @@ export default function View() {
           <MenuButton>
             <Icon
               as={HiDotsVertical}
-              h={3}
-              w={3}
+              h={4}
+              w={4}
             />
           </MenuButton>
           <MenuList
@@ -98,25 +97,6 @@ export default function View() {
             md: 3
           }}
         >
-          <ScrollFade
-            direction={useBreakpointValue({
-              base: "to left",
-              md: "to bottom"
-            })!}
-            height={{
-              base: "full",
-              md: 7
-            }}
-            width={{
-              base: 7,
-              md: "full"
-            }}
-            left={0}
-            display={{
-              base: "block",
-              md: "none"
-            }}
-          />
           <Stack
             height={{
               base: "auto",
@@ -149,6 +129,25 @@ export default function View() {
           >
             {isFetching ? <Skeletons /> : <Content data={data} hasNextPage={hasNextPage} fetchNextPage={fetchNextPage} />}
           </Stack>
+          <ScrollFade
+            direction={useBreakpointValue({
+              base: "to left",
+              md: "to bottom"
+            })!}
+            height={{
+              base: "full",
+              md: 7
+            }}
+            width={{
+              base: 7,
+              md: "full"
+            }}
+            left={0}
+            display={{
+              base: "block",
+              md: "none"
+            }}
+          />
           <SeeMoreButton />
         </Stack>
         <ScrollFade

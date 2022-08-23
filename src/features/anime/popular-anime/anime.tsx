@@ -1,9 +1,9 @@
 import { Box, Center, Image, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react"
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
-import PlayButton from "../../components/buttons/play"
-import { Media } from "../../types/api"
-import { paths } from "../../utilities/constants"
+import PlayButton from "../../../components/buttons/play"
+import { Media } from "../../../types/api"
+import { paths } from "../../../utilities/constants"
 
 type Props = {
   media: Media
@@ -66,11 +66,6 @@ export function Anime({ media }: Props) {
         position={"relative"}
         overflow={"clip"}
         borderRadius={"lg"}
-        onClick={
-          () => {
-            navigate(paths.anime+"/"+media.id)
-          }
-        }
       >
         <Image
           src={media.coverImage?.large!}

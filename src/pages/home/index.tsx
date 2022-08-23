@@ -1,28 +1,14 @@
-import { Box } from "@chakra-ui/react";
-import { useLayoutEffect } from "react";
-import { useSetRecoilState } from "recoil";
-import { homeDidRenderAtom } from "../../data/atoms";
-import Trending from "./trending";
-
+import { useBreakpointValue } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import TrendingAnime from "../../features/anime/trending";
+import PopularAnime from "./popular-anime";
 
 export default function Home() {
 
-  const setHomeDidRender = useSetRecoilState(homeDidRenderAtom);
-
-  useLayoutEffect(() => {
-    setHomeDidRender(true);
-    return () => setHomeDidRender(false); // set to force when component is removed
-  }, [setHomeDidRender]);
-
   return (
     <>
-      <Box
-        width={"full"}
-        height={"auto"}
-        p={0}
-        id={"popular-anime-portal-container-main"}
-      // popular animes are rendered here via a portal on mobile devices
-      />
+      {/* <TrendingAnime /> */ }
+      <PopularAnime />
     </>
   )
 

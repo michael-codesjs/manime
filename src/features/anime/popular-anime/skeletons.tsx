@@ -1,6 +1,6 @@
 import { Stack, useColorModeValue, VStack } from "@chakra-ui/react";
 import React from "react";
-import { Skeletons as CustomSkeletons } from "../../components/skeletons";
+import { Skeletons as CustomSkeletons } from "../../../components/skeletons";
 
 export default function Skeletons() {
 

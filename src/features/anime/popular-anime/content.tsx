@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { UseInfiniteQueryResult } from "react-query";
-import { Page } from "../../types/api";
+import { Page } from "../../../types/api";
 import { Anime } from "./anime";
 
 type InfiniteQueryResult = UseInfiniteQueryResult<Page, any>;
@@ -11,7 +11,7 @@ type Props = {
   fetchNextPage: InfiniteQueryResult["fetchNextPage"]
 }
 
-export default function Content(props: Props) {
+export function Content(props: Props) {
 
   const data = props.data!; // isLoading == false at this point and data is not undefined;
 
@@ -24,7 +24,7 @@ export default function Content(props: Props) {
               {
                 page.media!.map((media) => {
                   return (
-                    <Anime media={media!} />
+                    <Anime key={media!.id} media={media!} />
                   )
                 })
               }

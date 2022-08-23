@@ -1,15 +1,10 @@
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Grid, GridItem, Heading, HStack, IconButton, Image, Spacer, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react";
-import { useSetRecoilState } from "recoil";
+import { Box, Grid, HStack, Image, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import React from "react";
 import ColorModeSwitcher from "../../components/buttons/color-mode-switcher";
-import { navigationIsOpenAtom } from "../../data/atoms";
+import HamburgerButton from "../../components/buttons/hamburger";
 import Search from "../search";
 
-
-
 export default function Header() {
-
-  const setNavigationIsOpen = useSetRecoilState(navigationIsOpenAtom);
 
   return (
     <Grid
@@ -25,11 +20,10 @@ export default function Header() {
         `
       }}
       gridTemplateColumns={{
-        base: "repeat(2,1fr)",
+        base: "1fr 1fr",
         sm: "1fr 1fr 2fr",
-        md: "200px auto 320px"
+        md: "230px auto 320px"
       }}
-
       borderBottomWidth={{
         base: "1px",
         md: "0px"
@@ -46,17 +40,15 @@ export default function Header() {
       >
         <Image
           src={"/anime-logo.jpg"}
-          width={{
-            base: "30px",
-          }}
-          height={{
-            base: "30px",
-          }}
-          borderRadius={"full"}
+          alt={"logo"}
+          width={"30px"}
+          minW={"30px"}
+          height={"30px"}
+          rounded={"full"}
           objectFit={"cover"}
         />
         <Text
-          fontSize={"2xl"}
+          fontSize={"3xl"}
           fontWeight={"bold"}
           letterSpacing={"1.2px"}
           color={useColorModeValue("gray.800", "gray.50")}
@@ -69,23 +61,13 @@ export default function Header() {
         p={6}
       >
         <Box
-          id={"header-content-portal-container"}
+          id={"header-portal-container"}
           width={"full"}
           height={"full"}
-          // use this via a portal for all your extra content like tabs.
-          // on bigger screens that is.
+          // on larger screens use this via a portal for all your extra content like tabs.
         />
         <ColorModeSwitcher />
-        <IconButton
-          aria-label="menu-button"
-          icon={<HamburgerIcon />}
-          size={"sm"}
-          onClick={() => setNavigationIsOpen(isOpen => !isOpen)}
-          display={{
-            base: "block",
-            sm: "none"
-          }}
-        />
+        <HamburgerButton />
       </HStack>
 
       <Search />

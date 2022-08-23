@@ -1,12 +1,13 @@
 
 import React, { useMemo } from "react";
-import { Box, Flex, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, Flex, HStack, IconButton, Spacer, Text, useBreakpointValue, useColorModeValue, VStack } from "@chakra-ui/react";
 import NavigationItem from "./item";
 import { AiOutlineHome, AiOutlineGlobal, AiOutlineSound, AiOutlineBook, AiOutlineClockCircle, AiOutlineDownload } from "react-icons/ai";
 import { MdOndemandVideo, MdVideoLibrary } from "react-icons/md";
 import { paths } from "../../utilities/constants";
 import { useRecoilState } from "recoil";
 import { navigationIsOpenAtom } from "../../data/atoms";
+import { CloseIcon } from "@chakra-ui/icons";
 
 export default function Navigation() {
 
@@ -58,7 +59,7 @@ export default function Navigation() {
             height={"full"}
             justify={"start"}
             align={"start"}
-            spacing={3}
+            spacing={1}
           >
             {
               Object.entries(subNavigationItems).map(([name, args]) => {
@@ -76,17 +77,16 @@ export default function Navigation() {
 
   return (
     <Flex
-      gridArea={"nav"}
+      gridArea={"navigation"}
       borderRightWidth={"1px"}
       position={{
-        base: "absolute",
+        base: "fixed",
         sm: "relative"
       }}
       top={0}
       bottom={0}
-      left={0}
       right={0}
-      overflow={"hidden"}
+      left={0}
       backdropFilter={"blur(2px)"}
       zIndex={{
         base: navigationIsOpen ? 10 : -1,
@@ -97,7 +97,7 @@ export default function Navigation() {
         sm: 1
       }}
       transition={"all"}
-      transitionDuration={"0.2s"}
+      transitionDuration={"0.3s"}
     >
 
       <Box
@@ -137,14 +137,27 @@ export default function Navigation() {
           sm: "none"
         }}
         transitionDuration={"0.3s"}
-        onClick={
-          // override onclick so it does not close when you click the inside.
-          () => {
-            console.log("override")
-          }
-        }
       >
+
         {NAVIGATION_CONTENT}
+
+        <HStack
+          width={"full"}
+          display={{ base: "flex", sm: "none" }}
+          order={-1}
+          transform={"translateY(-32px)"}
+          px={6}
+        >
+          <Spacer />
+          <IconButton
+            aria-label="close-navigation-button"
+            variant={"unstyled"}
+            size={"lg"}
+            icon={<CloseIcon />}
+            onClick={() => setNavigationIsOpen(false)}
+          />
+        </HStack>
+
       </VStack>
 
     </Flex>

@@ -1,6 +1,6 @@
-import { Box, HStack, Icon, Text, useBreakpointValue, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, HStack, Icon, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoMdAlarm } from "react-icons/io"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { useSetRecoilState } from "recoil";
@@ -20,57 +20,43 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
   const setNavigationIsOpen = useSetRecoilState(navigationIsOpenAtom);
 
   const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const isActive = pathname === address;;
+  const isActive = pathname === address;
+
+  /* postLinkClick: on mobile devices, you'll want to close the navigation when a link is clicked */
+  const postLinkClick = useBreakpointValue({
+    base: () => {
+      setNavigationIsOpen(false);
+    },
+    sm: undefined
+  });
 
   return (
     <HStack
       as={Link}
       to={address}
-      onClick={
-        useBreakpointValue({
-          base: () => setNavigationIsOpen(false),
-          md: undefined
-        })
-      }
+      onClick={postLinkClick}
       spacing={5}
+      py={1}
       width={"full"}
+      align={"center"}
+      justify={"center"}
       color={useColorModeValue(isActive ? "red" : "gray.800", isActive ? "red" : "gray.100")}
       position={"relative"}
     >
       <Icon
         as={icon}
-        width={"18px"}
-        height={"18px"}
+        width={"20px"}
+        height={"20px"}
       />
 
       <Text
         width={"full"}
-        fontSize={"xs"}
+        fontSize={"13px"}
         fontWeight={isActive ? "semibold" : "normal"}
         textTransform={"capitalize"}
-        color={useColorModeValue(isActive ? "red" : "gray.600", isActive ? "red" : "gray.300")}
+        color={"inherit"}
       > {name} </Text>
-
-      <Box
-        position={"relative"}
-        w={"3px"}
-        h={"10px"}
-      >
-        <Box
-          width={"4px"}
-          height={isActive ? "16px" : "0px"}
-          rounded={"full"}
-          bg={"red"}
-          position={"absolute"}
-          transform={isActive ? "translate(1px,0px)" : "translate(1px, 8px)"}
-          opacity={isActive ? "1": "0"}
-          transition={isActive ? "all" : "none"}
-          transitionDuration={"0.3s"}
-          zIndex={1}
-        />
-      </Box>
-
+      
     </HStack>
   )
 }
