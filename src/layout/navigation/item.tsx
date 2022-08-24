@@ -1,6 +1,6 @@
-import { HStack, Icon, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
-import React, { useTransition } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { HStack, Icon, Text, } from "@chakra-ui/react";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import { IoMdAlarm } from "react-icons/io"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { useSetRecoilState } from "recoil";
@@ -19,9 +19,7 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
 
   const setNavigationIsOpen = useSetRecoilState(navigationIsOpenAtom);
 
-  const navigate = useNavigate();
   const { pathname } = useLocation();
-  const [, startTransition] = useTransition();
   const isActive = pathname === address;
 
   /* postLinkClick: on mobile devices, you'll want to close the navigation when a link is clicked */
@@ -31,16 +29,15 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
 
   return (
     <HStack
-      onClick={() => {
-        postLinkClick && postLinkClick();
-        navigate(address);
-      }}
+      as={Link}
+      to={address}
+      onClick={postLinkClick}
       spacing={5}
       py={1}
       width="full"
       align="center"
       justify="center"
-      color={useColorModeValue(isActive ? "red" : "gray.800", isActive ? "red" : "gray.100")}
+      color={isActive ? "red" : "gray.800"}
       position="relative"
     >
       <Icon

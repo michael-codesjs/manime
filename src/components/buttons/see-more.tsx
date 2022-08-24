@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Center, Flex, useColorModeValue } from "@chakra-ui/react";
+import { Button, ButtonProps, Flex } from "@chakra-ui/react";
 
 export default function SeeMoreButton(props: ButtonProps) {
   return (
@@ -34,11 +34,11 @@ export default function SeeMoreButton(props: ButtonProps) {
           base: "xs",
           md: "sm"
         }}
-        bg={useColorModeValue("gray.50", "whiteAlpha.100")}
-        color={useColorModeValue("gray.400", "gray.600")}
+        bg="gray.50"
+        color={"gray.400"}
         _hover={{
-          bg: useColorModeValue("gray.100", "whiteAlpha.300"),
-          color: useColorModeValue("gray.500", "gray.400"),
+          bg: "gray.100",
+          color: "gray.500",
           boxShadow: "sm"
         }}
         {...props}

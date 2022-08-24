@@ -1,11 +1,8 @@
-import { Skeleton, useColorModeValue } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 import React from "react";
 import { ExtendedSkeletonOptions } from ".";
 
 export function Skeletons({ count = 1, ...rest } : ExtendedSkeletonOptions) {
-  
-  const startColor = useColorModeValue("gray.50","gray.600");
-  const endColor = useColorModeValue("gray.200","gray.800")
 
   const skeletons = [];
   
@@ -13,8 +10,8 @@ export function Skeletons({ count = 1, ...rest } : ExtendedSkeletonOptions) {
     skeletons.push(
       <Skeleton
         key={x}
-        startColor={startColor}
-        endColor={endColor}
+        startColor={"gray.50"}
+        endColor={"gray.200"}
         width={"full"}
         height={"200px"}
         borderRadius={"lg"}

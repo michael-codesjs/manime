@@ -1,4 +1,4 @@
-import { Box, Icon, Input, InputGroup, InputLeftElement, useColorModeValue } from "@chakra-ui/react";
+import { Box, Icon, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { RiSearch2Line } from "react-icons/ri";
 
 export default function Search() {
@@ -27,7 +27,7 @@ export default function Search() {
         <InputLeftElement>
           <Icon
             as={RiSearch2Line}
-            color={useColorModeValue("gray.600", "gray.200")}
+            color={"gray.600"}
             width="14px"
             height="14px"
           />
@@ -44,10 +44,11 @@ export default function Search() {
             outline: "0"
           }}
           rounded="full"
-          bg={useColorModeValue("gray.50", "gray.700")}
+          borderWidth={"1px"}
+          backgroundColor={"gray.50"}
           placeholder="search"
           _placeholder={{
-            color: useColorModeValue("gray.400", "gray.200")
+            color: "gray.600"
           }}
         />
       </InputGroup>

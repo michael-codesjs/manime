@@ -1,27 +1,22 @@
-import { HStack, Icon, Menu, MenuButton, MenuList, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import { HStack, Icon, Menu, MenuButton, MenuList, Stack, Text, VStack } from "@chakra-ui/react";
 import { HiDotsVertical } from "react-icons/hi";
 import Skeletons from "./skeletons";
-import SeeMoreButton from "../../../components/buttons/see-more";
-import ScrollFade from "../../../components/scroll-fade";
-import { useInfiniteQuery, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { getPopular } from "../../../api/queries";
-import { Content } from "./content";
-import { Profiler, useEffect, useId, useMemo } from "react";
-import { profilerCallBack } from "../../../profilers";
+import { useMemo } from "react";
 import { Anime } from "./anime";
 
 export function PopularAnime() {
 
   const {
-    isFetching,
-    status,
+    isLoading,
     data,
   } = useQuery(["popular-anime", { page: 1, perPage: 6 }], getPopular, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
     notifyOnChangeProps: [
-      // we are only interested in in 3 states
+      "isLoading",
       "data",
       "isError"
     ],
@@ -41,8 +36,8 @@ export function PopularAnime() {
   },[data]);
 
   const memoizedSkeletons = useMemo(() => {
-    return isFetching && <Skeletons />;
-  },[isFetching]);
+    return isLoading && <Skeletons />;
+  },[isLoading]);
 
   return (
     <VStack
@@ -68,7 +63,6 @@ export function PopularAnime() {
           width="full"
           fontSize="lg"
           fontWeight="semibold"
-          color={useColorModeValue("gray.800", "gray.200")}
         > Popular Anime </Text>
         <Menu>
           <MenuButton>
@@ -142,7 +136,7 @@ export function PopularAnime() {
             p={"1px"}
           >
             {memoizedContent}
-            
+            {memoizedSkeletons}
           </Stack>
           
         </Stack>

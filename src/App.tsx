@@ -1,8 +1,5 @@
 import {
-  Box,
   Grid,
-  useBreakpointValue,
-  useColorModeValue
 } from "@chakra-ui/react";
 import "./index.css";
 import Header from "./layout/header";

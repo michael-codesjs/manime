@@ -1,4 +1,4 @@
-import { Box, Center, Image, ScaleFade, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react"
+import { Box, Center, Image, Stack, Text, VStack } from "@chakra-ui/react"
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import PlayButton from "../../../components/buttons/play"
@@ -17,8 +17,6 @@ export function Anime({ media }: Props) {
 
   return (
     <Stack
-      as={ScaleFade}
-      in={true}
       aria-label="popular-anime"
       direction={{
         base: "column",
@@ -38,7 +36,7 @@ export function Anime({ media }: Props) {
         base: "1px",
         md: "0px"
       }}
-      
+      borderColor="gray.50"
       boxShadow={{
         base: "xs",
         md: "none"

@@ -1,6 +1,5 @@
-import { Box, Grid, HStack, Image, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, Grid, HStack, Image, Text } from "@chakra-ui/react";
 import React from "react";
-import ColorModeSwitcher from "../../components/buttons/color-mode-switcher";
 import HamburgerButton from "../../components/buttons/hamburger";
 import Search from "../search";
 
@@ -24,10 +23,7 @@ export default function Header() {
         sm: "1fr 1fr 2fr",
         md: "230px auto 320px"
       }}
-      borderBottomWidth={{
-        base: "1px",
-        md: "0px"
-      }}
+      borderBottomWidth={"1px"}
     >
 
       <HStack
@@ -51,7 +47,6 @@ export default function Header() {
           fontSize="3xl"
           fontWeight="bold"
           letterSpacing="1.2px"
-          color={useColorModeValue("gray.800", "gray.50")}
         > anime </Text>
       </HStack>
 
@@ -66,7 +61,6 @@ export default function Header() {
           height="full"
           // on larger screens use this via a portal for all your extra content like tabs.
         />
-        <ColorModeSwitcher />
         <HamburgerButton />
       </HStack>
 

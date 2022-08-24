@@ -6,7 +6,7 @@ import { useSidePanel } from "../../hooks/use-side-panel";
 
 export default function PopularAnime() {
 
-  useSidePanel();
+  useSidePanel(); // will cause a re-render when the side-panel finally renders.
   
   const container = document.getElementById("side-panel");
 

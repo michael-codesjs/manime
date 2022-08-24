@@ -1,11 +1,8 @@
-import { Box, HStack, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react";
+import { HStack, VStack } from "@chakra-ui/react";
 import { Skeletons as CustomSkeletons } from "../../../components/skeletons";
 
 
 export function Skeletons() {
-
-  const containerBorderColor = useColorModeValue("gray.50", "gray.900");
-  const containerBgColor = useColorModeValue("none", "gray.700");
 
   const numberOfSkeletons = 10;
   const skeletons = [];
@@ -22,12 +19,12 @@ export function Skeletons() {
         rounded={"lg"}
         p={4}
         borderWidth={"1px"}
-        borderColor={containerBorderColor}
+        borderColor={"gray.50"}
         boxShadow={{
           base: "xs",
           md: "none"
         }}
-        bg={containerBgColor}
+        bg={"gray.200"}
         borderRadius={"8px"}
       >
         <CustomSkeletons

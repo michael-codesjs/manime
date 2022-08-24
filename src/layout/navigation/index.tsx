@@ -1,6 +1,6 @@
 
 import React, { useMemo } from "react";
-import { Box, Flex, HStack, IconButton, Spacer, Text, useBreakpointValue, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, Flex, HStack, IconButton, Spacer, Text, VStack } from "@chakra-ui/react";
 import NavigationItem from "./item";
 import { AiOutlineHome, AiOutlineGlobal, AiOutlineSound, AiOutlineBook, AiOutlineClockCircle, AiOutlineDownload } from "react-icons/ai";
 import { MdOndemandVideo, MdVideoLibrary } from "react-icons/md";
@@ -34,8 +34,6 @@ export default function Navigation() {
 
   };
 
-  const mainTextColor = useColorModeValue("gray.900", "gray.100");
-
   const NAVIGATION_CONTENT = useMemo(() => {
     return Object.entries(navigationItems).map(([subNavigationItem, subNavigationItems]) => {
       return (
@@ -49,7 +47,7 @@ export default function Navigation() {
         >
           <Text
             fontSize={"sm"}
-            color={mainTextColor}
+            color={"gray.900"}
             fontWeight={"semibold"}
             textTransform={"uppercase"}
           > {subNavigationItem} </Text>
@@ -121,7 +119,7 @@ export default function Navigation() {
         spacing={8}
         justify="start"
         bg={{
-          base: useColorModeValue("white", "gray.800"),
+          base: "white",
           sm: "none"
         }}
         position={{

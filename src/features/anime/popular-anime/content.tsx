@@ -1,5 +1,5 @@
-import { Fragment, Profiler, useMemo } from "react";
-import { UseInfiniteQueryResult, UseQueryResult } from "react-query";
+import { useMemo } from "react";
+import { UseQueryResult } from "react-query";
 import { Page } from "../../../types/api";
 import { Anime } from "./anime";
 

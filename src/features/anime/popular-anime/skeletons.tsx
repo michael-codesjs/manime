@@ -1,11 +1,8 @@
-import { Stack, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Stack, VStack } from "@chakra-ui/react";
 import React, { useMemo } from "react";
 import { Skeletons as CustomSkeletons } from "../../../components/skeletons";
 
 export default function Skeletons() {
-
-  const containerBorderColor = useColorModeValue("gray.50","gray.900");
-  const containerBgColor = useColorModeValue("none","gray.700");
 
   const numberOfSkeletons = 6;
   const skeletons = useMemo(() => {
@@ -29,15 +26,12 @@ export default function Skeletons() {
             base: "1px",
             md: "0px"
           }}
-          borderColor={containerBorderColor}
+          borderColor={"gray.50"}
           boxShadow={{
             base: "xs",
             md: "none"
           }}
-          bg={{
-            base: containerBgColor,
-            md: "none"
-          }}
+          bg={"none"}
           borderRadius={"8px"}
         >
           <CustomSkeletons
