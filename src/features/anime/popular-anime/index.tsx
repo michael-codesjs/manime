@@ -1,13 +1,14 @@
-import { HStack, Icon, Menu, MenuButton, MenuList, Stack, Text, useBreakpointValue, useColorModeValue, VStack } from "@chakra-ui/react";
+import { HStack, Icon, Menu, MenuButton, MenuList, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react";
 import { HiDotsVertical } from "react-icons/hi";
 import Skeletons from "./skeletons";
 import SeeMoreButton from "../../../components/buttons/see-more";
 import ScrollFade from "../../../components/scroll-fade";
-import { useInfiniteQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import { getPopular } from "../../../api/queries";
 import { Content } from "./content";
 import { Profiler, useEffect, useId, useMemo } from "react";
 import { profilerCallBack } from "../../../profilers";
+import { Anime } from "./anime";
 
 export function PopularAnime() {
 
@@ -15,7 +16,7 @@ export function PopularAnime() {
     isFetching,
     status,
     data,
-  } = useInfiniteQuery(["popular-anime", { page: 1, perPage: 6 }], getPopular, {
+  } = useQuery(["popular-anime", { page: 1, perPage: 6 }], getPopular, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
@@ -32,7 +33,11 @@ export function PopularAnime() {
   });
 
   const memoizedContent = useMemo(() => {
-    return data && <Content data={data} />;
+    return data && data.media!.map((media) => {
+      return (
+        <Anime key={media?.id.toString()} media={media!} />
+      )
+    })
   },[data]);
 
   const memoizedSkeletons = useMemo(() => {
@@ -137,9 +142,9 @@ export function PopularAnime() {
             p={"1px"}
           >
             {memoizedContent}
-            {memoizedSkeletons}
+            
           </Stack>
-          <SeeMoreButton />
+          
         </Stack>
       </Stack>
     </VStack>

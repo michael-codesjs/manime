@@ -1,4 +1,4 @@
-import { Box, Center, Image, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react"
+import { Box, Center, Image, ScaleFade, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react"
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import PlayButton from "../../../components/buttons/play"
@@ -17,14 +17,15 @@ export function Anime({ media }: Props) {
 
   return (
     <Stack
-      as={"article"}
-      aria-label={"popular-anime"}
+      as={ScaleFade}
+      in={true}
+      aria-label="popular-anime"
       direction={{
         base: "column",
         md: "row"
       }}
-      width={"full"}
-      minW={"220px"}
+      width="full"
+      minW="220px"
       spacing={{
         base: 4,
         md: 4
@@ -37,23 +38,19 @@ export function Anime({ media }: Props) {
         base: "1px",
         md: "0px"
       }}
-      borderColor={useColorModeValue("gray.50","gray.900")}
+      
       boxShadow={{
         base: "xs",
         md: "none"
       }}
-      bg={{
-        base: useColorModeValue("none","gray.700"),
-        md: "none"
-      }}
-      borderRadius={"8px"}
+      borderRadius="8px"
     >
 
       {/* anime cover image */}
       <Box
-        aria-label={"anime-cover"}
+        aria-label="anime-cover"
         backgroundColor={media.coverImage?.color!}
-        cursor={"pointer"}
+        cursor="pointer"
         width={{
           base: "full",
           md: "80px",
@@ -63,7 +60,7 @@ export function Anime({ media }: Props) {
           base: "150px",
           md: "90px"
         }}
-        position={"relative"}
+        position="relative"
         overflow={"clip"}
         borderRadius={"lg"}
       >
@@ -73,16 +70,16 @@ export function Anime({ media }: Props) {
           position={"absolute"}
           width={"full"}
           height={"full"}
-          objectFit={"cover"}
+          objectFit="cover"
         />
         <Center
-          backgroundColor={"blackAlpha.400"}
-          backdropFilter={"blur(3px)"}
-          width={"full"}
-          height={"full"}
-          rounded={"inherit"}
-          transition={"all"}
-          transitionDuration={"0.3s"}
+          backgroundColor="blackAlpha.400"
+          backdropFilter="blur(3px)"
+          width="full"
+          height="full"
+          rounded="inherit"
+          transition="all"
+          transitionDuration="0.3s"
           opacity={0}
           _hover={{
             opacity: 1,
@@ -94,13 +91,14 @@ export function Anime({ media }: Props) {
               () => {
                 navigate(paths.anime+"/"+media.id+"#play")
               }
-            }/>
+            }
+          />
         </Center>
       </Box>
 
       <VStack
-        width={"full"}
-        align={"start"}
+        width="full"
+        align="start"
         spacing={2}
       >
         <Box>
@@ -112,15 +110,15 @@ export function Anime({ media }: Props) {
               // md: "14px"
             }}
             color={useColorModeValue("gray.900", "gray.100")}
-            fontWeight={"medium"}
+            fontWeight="medium"
           > {title} </Text>
           <Text
-            fontSize={"xs"}
+            fontSize="xs"
             color={useColorModeValue("gray.500", "gray.500")}
-            maxH={"32px"}
-            whiteSpace={"normal"}
-            overflow={"hidden"}
-            textOverflow={"ellipsis"}
+            maxH="32px"
+            whiteSpace="normal"
+            overflow="hidden"
+            textOverflow="ellipsis"
             dangerouslySetInnerHTML={{
               __html: media.description! || media.genres!.join(" ")
             }}
@@ -128,10 +126,10 @@ export function Anime({ media }: Props) {
         </Box>
 
         <Text
-          fontSize={"10px"}
+          fontSize="10px"
           color={useColorModeValue("gray.600", "gray.300")}
-          fontWeight={"medium"}
-          cursor={"pointer"}
+          fontWeight="medium"
+          cursor="pointer"
           onClick={
             () => {
               navigate(paths.anime+"/"+media.id+"#episodes")

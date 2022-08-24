@@ -1,4 +1,3 @@
-import { useBreakpointValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react"
 import { useRecoilValue } from "recoil";
 import { sidePanelDidRenderAtom } from "../data/atoms";
@@ -10,10 +9,7 @@ export function useSidePanel() {
   const sidePanelDidRender = useRecoilValue(sidePanelDidRenderAtom);
   const [rendered, setRendered] = useState(false);
   
-  const isDesktop = useBreakpointValue({
-    base: false,
-    md: true
-  });
+  const isDesktop = window.innerWidth > 960 // 60em which is the md breakpoint;
 
   useEffect(() => {
     if(isDesktop && sidePanelDidRender) {
