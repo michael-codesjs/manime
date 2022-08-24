@@ -109,12 +109,12 @@ export function Anime({ media }: Props) {
               base: "13px",
               // md: "14px"
             }}
-            color={useColorModeValue("gray.900", "gray.100")}
+            
             fontWeight="medium"
           > {title} </Text>
           <Text
             fontSize="xs"
-            color={useColorModeValue("gray.500", "gray.500")}
+            
             maxH="32px"
             whiteSpace="normal"
             overflow="hidden"
@@ -127,7 +127,7 @@ export function Anime({ media }: Props) {
 
         <Text
           fontSize="10px"
-          color={useColorModeValue("gray.600", "gray.300")}
+          
           fontWeight="medium"
           cursor="pointer"
           onClick={
