@@ -11,7 +11,7 @@ export default function PopularAnime() {
   const container = document.getElementById("side-panel");
 
   return useBreakpointValue(
-    // render the popular anime in the side-panel on larger screens
+    // render the popular anime component in the side-panel on larger screens
     { base: <GenericPopularAnime />, md: container ? createPortal(<GenericPopularAnime />, container) : <></> },
     { ssr: false }
   )!;

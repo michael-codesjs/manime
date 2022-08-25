@@ -1,15 +1,34 @@
-import { Box, BoxProps } from "@chakra-ui/react";
+import React from "react";
 
-export default function ScrollFade(props: Omit<BoxProps, "bg" | "backgoundColor" | "backgroundImage"> & { height: BoxProps["height"], direction: "to bottom" | "to top" | "to left" | "to right" }) {
+type ScrollFadeProps = {
+  height?: number | string,
+  width?: number | string,
+  direction?: "top" | "bottom" | "right" | "left",
+  children?: React.ReactNode,
+  style?: React.HTMLAttributes<HTMLDivElement>["style"],
+  className?: string
+}
+
+const ScrollFade:React.FC<ScrollFadeProps> = ({ height = 10, width = "full", direction = "bottom", children, style, className }:ScrollFadeProps) => {
+
+  height = typeof height === "number" ? (height*4)+"px" : height === "full" ? "100%" : height;
+  width = typeof width === "number" ? (width*4)+"px" : width === "full" ? "100%" : width;
+
   return (
-    <Box
-      width={"full"}
-      minH={props.height}
-      position={"absolute"}
-      bottom={0}
-      zIndex={2}
-      background={`linear-gradient(${props.direction}, rgba(255,255,255,0), rgba(255,255,255,1))`}
-      { ...props }
+    <div
+      style={{
+        width: width,
+        minWidth: width,
+        height: height,
+        minHeight: height,
+        backgroundImage: `linear-gradient(to ${direction}, rgba(255,255,255,1), rgba(255,255,255,0))`,
+        ...style
+      }}
+      className={"absolute z-[2] from-cyan-200  to-cyan-900 "+(className)}
+      children={children}
     />
   )
+
 }
+
+export default ScrollFade;

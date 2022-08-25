@@ -64,11 +64,11 @@ export default function Navigation() {
   return (
     <div
       id="navigation"
-      className={"border-l fixed sm:relative top-0 left-0 bottom-0 right-0 bg-red sm:z-[1] sm:py-6 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-[1] opacity-100" : "-z-10 opacity-0")}
+      className={"border-l fixed sm:relative top-0 left-0 bottom-0 right-0 bg-red sm:z-[1] sm:py-6 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-10 opacity-100" : "-z-10 opacity-0")}
     >
 
       <div
-        className={"w-full h-full sm:hidden bg-blackAlpha transition-all " + (navigationIsOpen ? "opacity-100" : "opacity-0")}
+        className={"overlay w-full h-full sm:hidden backdrop-blur-sm bg-blackAlpha transition-all " + (navigationIsOpen ? "opacity-100" : "opacity-0")}
         onClick={
           () => setNavigationIsOpen(false)
         }

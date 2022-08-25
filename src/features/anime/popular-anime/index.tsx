@@ -1,10 +1,10 @@
-import { HStack, Icon, Menu, MenuButton, MenuList, Stack, Text, VStack } from "@chakra-ui/react";
-import { HiDotsVertical } from "react-icons/hi";
-import Skeletons from "./skeletons";
+import { useMemo } from "react";
 import { useQuery } from "react-query";
 import { getPopular } from "../../../api/queries";
-import { useMemo } from "react";
+import SeeMoreButton from "../../../components/buttons/see-more";
+import ScrollFade from "../../../components/scroll-fade";
 import { Anime } from "./anime";
+import Skeletons from "./skeletons";
 
 export function PopularAnime() {
 
@@ -33,114 +33,66 @@ export function PopularAnime() {
         <Anime key={media?.id.toString()} media={media!} />
       )
     })
-  },[data]);
+  }, [data]);
 
   const memoizedSkeletons = useMemo(() => {
     return isLoading && <Skeletons />;
-  },[isLoading]);
+  }, [isLoading]);
 
   return (
-    <VStack
-      width="full"
-      spacing={{
-        base: 4,
-        md: 2
-      }}
-      p={0}
-      align="start"
-      justify="start"
-    >
+    <section className="w-full p-0 vstack space-y-4 md:space-y-0">
 
-      <HStack
-        width="full"
-        justify="space-between"
-        px={{
-          base: 7,
-          md: 0
-        }}
-      >
-        <Text
-          width="full"
-          fontSize="lg"
-          fontWeight="semibold"
-        > Popular Anime </Text>
-        <Menu>
-          <MenuButton>
-            <Icon
-              as={HiDotsVertical}
-              h={4}
-              w={4}
-            />
-          </MenuButton>
-          <MenuList
-            p={4}
-          >
+      <h2 className="w-full px-7 md:px-0 text-lg font-semibold">Popular Anime</h2>
 
-          </MenuList>
-        </Menu>
+      <div className="flex flex-row md:flex-col space-x-6 md:space-x-0 md:space-y-3 w-full relative">
+        <div className="flex flex-row md:flex-col items-center w-full overflow-x-scroll md:overflow-x-hidden px-7 md:px-0 space-x-0 md:space-y-3">
 
-      </HStack>
+          <ScrollFade
+            // scroll fade that is on the left for small screens
+            height={"full"}
+            width={7}
+            direction={"right"}
+            style={{
+              transform: "translateX(-" + (7 * 4) + "px)",
+              position: "absolute"
+            }}
+            className={"md:hidden"}
+          />
 
-      <Stack
-        direction={{
-          base: "row",
-          md: "column"
-        }}
-        spacing={{
-          base: 6,
-          md: 3
-        }}
-        width="full"
-        position="relative"
-      >
-        <Stack
-          direction={{
-            base: "row",
-            md: "column"
-          }}
-          width="full"
-          overflowX={{
-            base: "scroll",
-            md: "hidden"
-          }}
-          px={{
-            base: 7,
-            md: 0
-          }}
-          spacing={{
-            base: 0,
-            md: 3
-          }}
-        >
-          <Stack
-            height={{
-              base: "auto",
-              md: "220px"
-            }}
-            direction={{
-              base: "row",
-              md: "column"
-            }}
-            spacing={{
-              base: 6,
-              md: 3
-            }}
-            width={{
-              base: "auto",
-              md: "full"
-            }}
-            pb={{
-              base: 0,
-              md: 8
-            }}
-            p={"1px"}
-          >
+          <div className={"flex flex-row md:flex-col md:h-[230px] md:w-full md:overflow-scroll md:pb-8 space-x-6 md:space-x-0 md:space-y-5 p-[1px]"}>
             {memoizedContent}
             {memoizedSkeletons}
-          </Stack>
-          
-        </Stack>
-      </Stack>
-    </VStack>
+          </div>
+
+          <SeeMoreButton />
+
+        </div>
+
+        <ScrollFade
+          // scroll fade that is on the right for small screens
+          height={"full"}
+          width={7}
+          direction={"left"}
+          style={{
+            right: 0,
+            bottom: 0
+          }}
+          className={"md:hidden"}
+        />
+
+        <ScrollFade
+          // scroll fade that is at the for larger screens
+          height={8}
+          width={"full"}
+          direction={"top"}
+          style={{
+            bottom: "46px"
+          }}
+          className={"hidden md:block"}
+        />
+
+      </div>
+
+    </section>
   )
 }

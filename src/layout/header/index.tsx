@@ -12,7 +12,7 @@ export default function Header() {
     >
       <div
         id="brand"
-        className="flex space-x-4 md:border-r-[1px] p-6"
+        className="flex space-x-4 md:border-r p-6"
       >
         <img
           src="/anime-logo.jpg"

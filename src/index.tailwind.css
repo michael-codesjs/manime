@@ -55,6 +55,16 @@ header #search {
 
 #navigation {
   grid-area: navigation;
+  transition: all;
+}
+
+#navgation .overlay {
+  transition-duration: 0.3s;
+}
+
+#navigation nav {
+  transition: all;
+  transition-duration: 0.3s;
 }
 
 main>* {

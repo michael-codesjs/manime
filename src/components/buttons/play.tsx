@@ -1,27 +1,14 @@
-import { Icon, IconButton, IconButtonProps } from "@chakra-ui/react";
+import React from "react";
 import { HiPlay } from "react-icons/hi";
 
-
-
-export default function PlayButton(props:Omit<IconButtonProps, "icon" | "aria-label">) {
+export default function PlayButton(props: React.HTMLAttributes<HTMLButtonElement>) {
   return (
-    <IconButton
-      variant={"unstyled"}
+    <button
       aria-label="anime-play-button"
-      display={"flex"}
-      alignItems={"center"}
-      justifyContent={"center"}
-      rounded={"full"}
-      backgroundColor={"gray.700"}
-      color={"red.600"}
-      icon={<Icon as={HiPlay} height={4} width={4} />}
-      size={"sm"}
-      transition={"all"}
-      transitionDuration={"0.3s"}
-      _hover={{
-        transform: "scale(1.2)"
-      }}
+      className={"flex items-center justify-center rounded-full w-10 h-10 md:w-8 md:h-8 bg-gray-700 text-red-600 transition-all hover:scale-125"}
       {...props}
-    />
+    >
+      <HiPlay /> 
+    </button>
   )
 }
