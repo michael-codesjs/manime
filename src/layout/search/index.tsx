@@ -4,55 +4,43 @@ import { RiSearch2Line } from "react-icons/ri";
 export default function Search() {
 
   return (
-    <Box
-      gridArea="search"
-      pb={{
-        base: 6,
-        sm: 0
-      }}
-      pt={{
-        sm: 6
-      }}
-      px={6}
-      borderLeftWidth={{
-        base: "0px",
-        md: "1px"
-      }}
+    <form
+      id={"search"}
+      className={"pb-6 md:pb-0 sm:pt-6 px-6 md:border-l"}
     >
-      <InputGroup
-        width="full"
-        height="38px"
-        alignItems="center"
+      <label
+        htmlFor="search-input"
+        className={`
+          w-full
+          h-11
+          px-5
+          space-x-4
+          flex
+          items-center
+          justify-center
+          bg-gray-50
+          border-2
+          border-gray-100
+          rounded-full
+          focus-within:border-blue-500
+          transition-all
+        `}
       >
-        <InputLeftElement>
+        <p>
           <Icon
             as={RiSearch2Line}
             color={"gray.600"}
             width="14px"
             height="14px"
           />
-        </InputLeftElement>
-        <Input
+        </p>
+        <input
           type="search"
-          width="full"
-          height="40px"
-          alignItems="center"
-          justifyContent="center"
-          fontSize="14px"
-          _focus={{
-            border: "none",
-            outline: "0"
-          }}
-          rounded="full"
-          borderWidth={"1px"}
-          backgroundColor={"gray.50"}
+          className="w-full rounded-full h-full text-[14px] placeholder:text-gray-600 focus:outline-none bg-inherit"
           placeholder="search"
-          _placeholder={{
-            color: "gray.600"
-          }}
         />
-      </InputGroup>
-    </Box>
+      </label>
+    </form>
   )
 
 }

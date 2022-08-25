@@ -11,7 +11,21 @@ import Routes from "./Routes";
 export default function App() {
 
   return (
-    <Grid
+    <div
+      id={"app"}
+    >
+      <Header />
+      <Routes />
+      <Navigation />
+      <SidePanel />
+    </div>
+  )
+
+}
+
+/*
+
+ <Grid
       width="100vw"
       minHeight="100vh"
       gridTemplateAreas={{
@@ -42,12 +56,11 @@ export default function App() {
         md: "min-content auto"
       }}
     >
-      <SidePanel /> {/* this should be rendered before any other components that make use of its portal containers.*/}
+      <SidePanel /> 
       <Header />
       <Routes />
       <Navigation />
 
     </Grid>
-  )
 
-}
+*//* this should be rendered before any other components that make use of its portal containers.*/

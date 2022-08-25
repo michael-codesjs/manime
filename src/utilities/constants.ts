@@ -10,3 +10,10 @@ export const paths = {
   "recent": "/recent",
   "downloaded": "/downloaded"
 }
+
+
+export const breakpoints = {
+  sm: 576,
+  md: 960,
+  lg: 1088
+}

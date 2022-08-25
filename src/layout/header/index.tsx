@@ -6,67 +6,37 @@ import Search from "../search";
 export default function Header() {
 
   return (
-    <Grid
-      as="header"
-      gridArea="header"
-      templateAreas={{
-        base: `
-          "brand extras"
-          "search search"
-        `,
-        sm: `
-          "brand extras search"
-        `
-      }}
-      gridTemplateColumns={{
-        base: "1fr 1fr",
-        sm: "1fr 1fr 2fr",
-        md: "230px auto 320px"
-      }}
-      borderBottomWidth={"1px"}
+    <header
+      id="header"
+      className="border-b md:border-b-0"
     >
-
-      <HStack
-        gridArea="brand"
-        borderRightWidth={{
-          base: "0px",
-          md: "1px"
-        }}
-        p={6}
+      <div
+        id="brand"
+        className="flex space-x-4 md:border-r-[1px] p-6"
       >
-        <Image
+        <img
           src="/anime-logo.jpg"
           alt="logo"
-          width="30px"
-          minW="30px"
-          height="30px"
-          rounded="full"
-          objectFit="cover"
+          className="w-8 min-w-[32px] h-8 rounded-full object-cover"
         />
-        <Text
-          fontSize="3xl"
-          fontWeight="bold"
-          letterSpacing="1.2px"
-        > anime </Text>
-      </HStack>
+        <h1 className="text-3xl font-bold tracking-wide"> anime </h1>
+      </div>
 
-      <HStack
-        gridArea="extras"
-        spacing={4}
-        p={6}
+      <div
+        id="extras"
+        className="flex space-x-4 p-6"
       >
-        <Box
+        <div
           id="header-portal-container"
-          width="full"
-          height="full"
+          className="w-full h-full"
           // on larger screens use this via a portal for all your extra content like tabs.
         />
         <HamburgerButton />
-      </HStack>
+      </div>
 
       <Search />
 
-    </Grid>
+    </header>
   )
 
 }

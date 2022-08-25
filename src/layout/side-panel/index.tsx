@@ -6,8 +6,7 @@ import { sidePanelDidRenderAtom } from "../../data/atoms";
 export default function SidePanel() {
 
   /*
-   * we'll need to let other components know when we have been rendered.
-   * this is so that they can use the portal container.
+   * notify other components when this component is painted/ready to be used as a portal.
    */
 
   const setSidePanelDidRender = useSetRecoilState(sidePanelDidRenderAtom);
@@ -20,20 +19,15 @@ export default function SidePanel() {
   },[startTransition]);
 
   return (
-    <VStack
-      as="aside"
-      gridArea="side-panel"
+    <aside
       id={"side-panel"}
-      justify="start"
-      px={6}
-      spacing={8}
-      borderLeftWidth={{
-        base: "0px",
-        md: "1px"
-      }}
-      overflowY={{
-        md: "scroll"
-      }}
+      className={`
+        justify-start
+        px-6
+        border-l-[1px]
+        space-y-8
+        overflow-y-scroll
+      `}
     />
   )
 

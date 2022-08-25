@@ -28,32 +28,14 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
   };
 
   return (
-    <HStack
-      as={Link}
+    <Link
       to={address}
       onClick={postLinkClick}
-      spacing={5}
-      py={1}
-      width="full"
-      align="center"
-      justify="center"
-      color={isActive ? "red" : "gray.800"}
-      position="relative"
+      className={"hstack space-x-5 w-full items-center justify-center relative "+(isActive ? "text-red-600" : "text-gray-700")}
     >
-      <Icon
-        as={icon}
-        width="20px"
-        height="20px"
-      />
+      { icon }
+      <p className={"w-full text-[13px] capitalize text-inherit "+(isActive ? "font-semibold" : "font-normal")}> {name} </p>
 
-      <Text
-        width="full"
-        fontSize="13px"
-        fontWeight={isActive ? "semibold" : "normal"}
-        textTransform="capitalize"
-        color="inherit"
-      > {name} </Text>
-
-    </HStack>
+    </Link>
   )
 }

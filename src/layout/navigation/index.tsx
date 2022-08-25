@@ -13,52 +13,40 @@ export default function Navigation() {
 
   const [navigationIsOpen, setNavigationIsOpen] = useRecoilState(navigationIsOpenAtom);
 
-  const navigationItems = {
-
-    menu: {
-      home: { address: paths.home, icon: AiOutlineHome },
-      community: { address: paths.community, icon: AiOutlineGlobal },
-      speakers: { address: paths.speakers, icon: AiOutlineSound }
-    },
-
-    categories: {
-      anime: { address: paths.anime, icon: MdVideoLibrary },
-      manga: { address: paths.manga, icon: AiOutlineBook },
-      movie: { address: paths.movies, icon: MdOndemandVideo }
-    },
-
-    library: {
-      recent: { address: paths.recent, icon: AiOutlineClockCircle },
-      downloaded: { address: paths.downloaded, icon: AiOutlineDownload }
+  const navigationItems = useMemo(() => {
+    const iconProps = {
+      className: "text-xl"
     }
+    return {
+      menu: {
+        home: { address: paths.home, icon: <AiOutlineHome {...iconProps} /> },
+        community: { address: paths.community, icon: <AiOutlineGlobal {...iconProps} /> },
+        speakers: { address: paths.speakers, icon: <AiOutlineSound {...iconProps} /> }
+      },
 
-  };
+      categories: {
+        anime: { address: paths.anime, icon: <MdVideoLibrary {...iconProps} /> },
+        manga: { address: paths.manga, icon: <AiOutlineBook {...iconProps} /> },
+        movie: { address: paths.movies, icon: <MdOndemandVideo {...iconProps} /> }
+      },
+
+      library: {
+        recent: { address: paths.recent, icon: <AiOutlineClockCircle {...iconProps} /> },
+        downloaded: { address: paths.downloaded, icon: <AiOutlineDownload {...iconProps} /> }
+      }
+
+    }
+  }, []);
 
   const NAVIGATION_CONTENT = useMemo(() => {
     return Object.entries(navigationItems).map(([subNavigationItem, subNavigationItems]) => {
       return (
-        <VStack
+        <div
           key={subNavigationItem}
-          justify={"start"}
-          align={"start"}
-          spacing={7}
-          pl={8}
-          width={"full"}
+          className="flex vstack space-y-8 w-full pl-8"
         >
-          <Text
-            fontSize={"sm"}
-            color={"gray.900"}
-            fontWeight={"semibold"}
-            textTransform={"uppercase"}
-          > {subNavigationItem} </Text>
-
-          <VStack
-            width={"full"}
-            height={"full"}
-            justify={"start"}
-            align={"start"}
-            spacing={1}
-          >
+          <p className="text-sm text-gray-900 font-semibold uppercase"> {subNavigationItem} </p>
+          <div className="w-full h-full vstack space-y-2">
             {
               Object.entries(subNavigationItems).map(([name, args]) => {
                 return (
@@ -66,99 +54,44 @@ export default function Navigation() {
                 )
               })
             }
-          </VStack>
+          </div>
 
-        </VStack>
+        </div>
       )
     })
   }, [navigationItems]);
 
   return (
-    <Flex
-      gridArea="navigation"
-      borderRightWidth="1px"
-      position={{
-        base: "fixed",
-        sm: "relative"
-      }}
-      top={0}
-      bottom={0}
-      right={0}
-      left={0}
-      backdropFilter="blur(2px)"
-      zIndex={{
-        base: navigationIsOpen ? 10 : -1,
-        sm: 1
-      }}
-      opacity={{
-        base: navigationIsOpen ? 1 : 0,
-        sm: 1
-      }}
-      transition="all"
-      transitionDuration="0.3s"
+    <div
+      id="navigation"
+      className={"border-l fixed sm:relative top-0 left-0 bottom-0 right-0 bg-red sm:z-[1] sm:py-6 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-[1] opacity-100" : "-z-10 opacity-0")}
     >
 
-      <Box
-        width="full"
-        height="full"
-        display={{ base: "block", sm: "none" }}
-        bg="blackAlpha.500"
+      <div
+        className={"w-full h-full sm:hidden bg-blackAlpha transition-all " + (navigationIsOpen ? "opacity-100" : "opacity-0")}
         onClick={
           () => setNavigationIsOpen(false)
         }
       />
 
-      <VStack
-        as="nav"
-        width={{
-          base: "280px",
-          md: "full"
-        }}
-        height="full"
-        py={6}
-        spacing={8}
-        justify="start"
-        bg={{
-          base: "white",
-          sm: "none"
-        }}
-        position={{
-          base: "fixed",
-          sm: "relative"
-        }}
-        right={{
-          base: navigationIsOpen ? "0px" : "-280px",
-          sm: 0
-        }}
-        transition={{
-          base: "all",
-          sm: "none"
-        }}
-        transitionDuration="0.3s"
+      <nav
+        className={"w-[300px] sm:w-full h-full vstack space-y-8 fixed sm:relative top-0 sm:right-0 bg-white transition-all " + (navigationIsOpen ? "right-0" : "-right-[300px]")}
       >
 
         {NAVIGATION_CONTENT}
 
-        <HStack
-          width="full"
-          display={{ base: "flex", sm: "none" }}
-          order={-1}
-          transform="translateY(-32px)"
-          px={6}
-        >
-          <Spacer />
-          <IconButton
+        <div className="hstack w-full sm:hidden -order-1 px-6">
+          <div className="w-full" />
+          <button
             aria-label="close-navigation-button"
-            variant="unstyled"
-            size="lg"
-            icon={<CloseIcon />}
+            className="p-1 text-5xl font-medium"
             onClick={() => setNavigationIsOpen(false)}
-          />
-        </HStack>
+          > &times; </button>
+        </div>
 
-      </VStack>
+      </nav>
 
-    </Flex>
+    </div>
   )
 
 }
