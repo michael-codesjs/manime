@@ -13,7 +13,7 @@ export const paths = {
 
 
 export const breakpoints = {
-  sm: 576,
+  lg: 1088,
   md: 960,
-  lg: 1088
+  sm: 576
 }

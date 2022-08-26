@@ -11,7 +11,7 @@ export function PopularAnime() {
   const {
     isLoading,
     data,
-  } = useQuery(["popular-anime", { page: 1, perPage: 6 }], getPopular, {
+  } = useQuery(["popular-anime", { page: 1, perPage: 8 }], getPopular, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
@@ -59,7 +59,7 @@ export function PopularAnime() {
             className={"md:hidden"}
           />
 
-          <div className={"flex flex-row md:flex-col md:h-[230px] md:w-full md:overflow-scroll md:pb-8 space-x-6 md:space-x-0 md:space-y-5 p-[1px]"}>
+          <div className={"flex flex-row md:flex-col md:h-[240px] md:w-full md:overflow-scroll md:pb-8 space-x-6 md:space-x-0 md:space-y-5 p-[1px]"}>
             {memoizedContent}
             {memoizedSkeletons}
           </div>
@@ -81,7 +81,7 @@ export function PopularAnime() {
         />
 
         <ScrollFade
-          // scroll fade that is at the for larger screens
+          // scroll fade that is at the bottom for larger screens
           height={8}
           width={"full"}
           direction={"top"}

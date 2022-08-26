@@ -34,9 +34,7 @@ root.render(
     <RecoilRoot>
       <BrowserRouter>
         <ColorModeScript />
-        <ChakraProvider theme={theme}>
           <App />
-        </ChakraProvider>
       </BrowserRouter>
     </RecoilRoot>
   </QueryClientProvider>,

@@ -2,47 +2,8 @@ import { Button, ButtonProps, Flex } from "@chakra-ui/react";
 
 export default function SeeMoreButton(props: ButtonProps) {
   return (
-    <Flex
-      align={"center"}
-      justify={"center"}
-      width={{
-        base: "200px",
-        md: "full"
-      }}
-      minW={{
-        base: "200px",
-        md: "full"
-      }}
-      height={{
-        base: "200px",
-        md: "auto"
-      }}
-    >
-      <Button
-        variant={"unstyled"}
-        colorScheme={"gray"}
-        width={{
-          base: "124px",
-          md: "full"
-        }}
-        height={{
-          base: "124px",
-          md: "36px"
-        }}
-        rounded={"full"}
-        fontSize={{
-          base: "xs",
-          md: "sm"
-        }}
-        bg="gray.50"
-        color={"gray.400"}
-        _hover={{
-          bg: "gray.100",
-          color: "gray.500",
-          boxShadow: "sm"
-        }}
-        {...props}
-      > See more </Button>
-    </Flex>
+    <div className={"flex items-center justify-center w-[200px] md:w-full min-w-[200px] h-[200px] md:h-auto box-border"}>
+      <button className="bg-gray-100 hover:bg-gray-200 w-40 md:w-full h-40 md:h-10 rounded-full text-sm font-medium text-gray-500 hover:text-gray-700 hover:shadow-sm transition-all duration-200"> See more </button>
+    </div>
   )
 }

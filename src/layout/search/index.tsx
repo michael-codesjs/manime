@@ -22,7 +22,9 @@ export default function Search() {
           border-2
           border-gray-100
           rounded-full
-          focus-within:border-blue-500
+          focus-within:border-blue-200
+          focus-within:shadow-blue-200
+          focus-within:shadow-sm
           transition-all
         `}
       >

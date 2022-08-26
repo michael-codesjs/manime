@@ -9,85 +9,27 @@ export default function Skeletons() {
     const skeletons = [];
     for (let x = 0; x < numberOfSkeletons; x++) {
       skeletons.push(
-        <Stack
+        <div
           key={x}
-          direction={{
-            base: "column",
-            md: "row"
-          }}
-          width={"full"}
-          minW={"220px"}
-          spacing={4}
-          p={{
-            base: 4,
-            md: 0
-          }}
-          borderWidth={{
-            base: "1px",
-            md: "0px"
-          }}
-          borderColor={"gray.50"}
-          boxShadow={{
-            base: "xs",
-            md: "none"
-          }}
-          bg={"none"}
-          borderRadius={"8px"}
+          className={"flex flex-col md:flex-row w-full min-w-[220px] space-y-4 md:space-y-0 md:space-x-4 border p-4 md:p-0 md:border-0 shadow-sm md:shadow-none rounded-lg"}
         >
-          <CustomSkeletons
-            count={1}
-            width={{
-              base: "full",
-              md: "80px",
-            }}
-            minW={"80px"}
-            height={{
-              base: "150px",
-              md: "90px"
-            }}
-            borderRadius={"xl"}
-          />
-          <VStack
-            width={"full"}
-            height={"auto"}
-            align={"start"}
-            spacing={2}
-          >
-            <CustomSkeletons
-              count={1}
-              height={"28px"}
-              borderRadius={"md"}
-            />
-            <VStack
-              width={"full"}
-              spacing={2}
-              align={"start"}
-            >
-              <CustomSkeletons
-                count={1}
-                height={"14px"}
-                borderRadius={"md"}
-              />
-              <CustomSkeletons
-                count={1}
-                height={"8px"}
-                width={"66%"}
-                borderRadius={"md"}
-              />
-            </VStack>
-            <CustomSkeletons
-              count={1}
-              height={"18px"}
-              width={"50px"}
-              rounded={"full"}
-              borderRadius={"sm"}
-            />
-          </VStack>
-        </Stack>
+          <CustomSkeletons className={"w-full md:w-20 min-w-[80px] h-40 md:h-[90px] rounded-xl"} />
+          <div className="vstack space-y-2 w-full">
+            <CustomSkeletons className={"h-4 min-h-[16px] rounded-md"} />
+            <div className="vstack space-y-2 w-full h-full">
+              <CustomSkeletons className={"h-[11px] rounded-md"} />
+              <CustomSkeletons className={"h-[11px] w-3/5 rounded-md"} />
+            </div>
+            <div className="flex items-center justify-between w-full h-6 min-h-[24px] space-x-5">
+              <CustomSkeletons className={"h-[10px] min-h-[12px] w-12 rounded-full"} />
+              <CustomSkeletons className={"h-full w-6 rounded-full"} />
+            </div>
+          </div>
+        </div>
       )
     }
     return skeletons;
-  },[]);
+  }, []);
 
   return <> {skeletons} </>
 }
