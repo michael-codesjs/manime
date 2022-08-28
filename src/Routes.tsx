@@ -8,7 +8,7 @@ import { paths } from "./utilities/constants";
 
 export default function () {
   return (
-    <main className="vstack space-y-5 py-6 md:py-0">
+    <main className="vstack overflow-hidden space-y-5 py-6 md:py-0">
       <Routes>
         <Route path={paths.home} element={<Home />} />
       </Routes>

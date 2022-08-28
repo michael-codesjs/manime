@@ -21,7 +21,7 @@ const ScrollFade:React.FC<ScrollFadeProps> = ({ height = 10, width = "full", dir
         minWidth: width,
         height: height,
         minHeight: height,
-        backgroundImage: `linear-gradient(to ${direction}, rgba(255,255,255,1), rgba(255,255,255,0))`,
+        backgroundImage: `linear-gradient(to ${direction}, rgba(255,255,255,8), rgba(255,255,255,0))`,
         ...style
       }}
       className={"absolute z-[2] from-cyan-200  to-cyan-900 "+(className)}

@@ -68,6 +68,7 @@ export default function Navigation() {
     >
 
       <div
+       // OVERLAY
         className={"overlay w-full h-full sm:hidden backdrop-blur-sm bg-blackAlpha transition-all " + (navigationIsOpen ? "opacity-100" : "opacity-0")}
         onClick={
           () => setNavigationIsOpen(false)
