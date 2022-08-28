@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { Page } from "../types/api";
 
 export const navigationIsOpenAtom = atom<boolean>({
   key: "navigation-is-open",

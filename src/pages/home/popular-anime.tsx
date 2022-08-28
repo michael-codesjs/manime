@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { PopularAnime as BasePopularAnime } from "../../features/anime/popular-anime";
+import { PopularAnime as BasePopularAnime } from "../../features/anime/popular";
 import useBreakpointValue from "../../hooks/media/use-breakpoint-value";
 import { useSidePanel } from "../../hooks/use-side-panel";
 

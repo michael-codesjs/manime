@@ -43,7 +43,7 @@ export default function Navigation() {
           key={subNavigationItem}
           className="flex vstack space-y-8 w-full pl-8"
         >
-          <p className="text-sm text-gray-900 font-semibold uppercase"> {subNavigationItem} </p>
+          <p className="text-md text-gray-900 font-semibold uppercase"> {subNavigationItem} </p>
           <div className="w-full h-full vstack space-y-2">
             {
               Object.entries(subNavigationItems).map(([name, args]) => {
@@ -62,7 +62,7 @@ export default function Navigation() {
   return (
     <div
       id="navigation"
-      className={"border-l fixed sm:relative top-0 left-0 bottom-0 right-0 bg-red sm:z-[1] sm:py-6 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-10 opacity-100" : "-z-10 opacity-0")}
+      className={"border-l fixed sm:relative top-0 left-0 bottom-0 right-0 bg-red sm:z-[1] sm:py-0 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-10 opacity-100" : "-z-10 opacity-0")}
     >
 
       <div

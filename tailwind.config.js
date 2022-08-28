@@ -7,7 +7,7 @@ module.exports = {
       screens: {
         sm: "576px",
         md: "960px",
-        lg: "1088px"
+        lg: "1360px"
       },
       colors: {
         blackAlpha: "rgba(0,0,0,0.6)"

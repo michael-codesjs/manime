@@ -3,9 +3,10 @@
 type SkeletonProps = {
   count?: number,
   className?: string
+  children?: React.ReactNode
 }
 
-export function Skeletons({ count = 1, className = "" } : SkeletonProps) {
+export function Skeletons({ count = 1, className = "", children } : SkeletonProps) {
 
   const skeletons = [];
   
@@ -14,6 +15,7 @@ export function Skeletons({ count = 1, className = "" } : SkeletonProps) {
       <div
         key={x}
         className={"bg-gray-200 animate-pulse rounded-lg "+className}
+        children={children}
       />
     )
   }

@@ -23,6 +23,7 @@ export default function SidePanel() {
       className={`
         justify-start
         px-6
+        py-0
         border-l-[1px]
         space-y-8
         overflow-y-scroll
