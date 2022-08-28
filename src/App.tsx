@@ -1,6 +1,3 @@
-import {
-  Grid,
-} from "@chakra-ui/react";
 import "./index.css";
 import Header from "./layout/header";
 import Navigation from "./layout/navigation";

@@ -1,4 +1,3 @@
-import { Box, Icon, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { RiSearch2Line } from "react-icons/ri";
 
 export default function Search() {
@@ -28,14 +27,7 @@ export default function Search() {
           transition-all
         `}
       >
-        <p>
-          <Icon
-            as={RiSearch2Line}
-            color={"gray.600"}
-            width="14px"
-            height="14px"
-          />
-        </p>
+        <RiSearch2Line className={"text-gray-600 w-[18px] h-[18px]"} />
         <input
           type="search"
           className="w-full rounded-full h-full text-[14px] placeholder:text-gray-600 focus:outline-none bg-inherit"

@@ -1,8 +1,7 @@
-import { HStack, Icon, Text, } from "@chakra-ui/react";
 import React from "react";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { IoMdAlarm } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
-import { IoMdAlarm } from "react-icons/io"
-import { AiOutlineClockCircle } from "react-icons/ai"
 import { useSetRecoilState } from "recoil";
 import { navigationIsOpenAtom } from "../../data/atoms";
 

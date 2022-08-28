@@ -1,5 +1,3 @@
-import { Box, Grid, HStack, Image, Text } from "@chakra-ui/react";
-import React from "react";
 import HamburgerButton from "../../components/buttons/hamburger";
 import Search from "../search";
 

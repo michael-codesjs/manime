@@ -1,4 +1,3 @@
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react"
 import * as React from "react"
 import * as ReactDOM from "react-dom/client"
 import App from "./App"
@@ -6,7 +5,6 @@ import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
 import { BrowserRouter } from "react-router-dom"
 import { RecoilRoot } from "recoil"
-import { theme } from "./utilities/theme";
 import { Amplify } from "aws-amplify";
 import queryClient from "./api/client"
 import { QueryClientProvider } from "react-query"
@@ -33,8 +31,7 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <RecoilRoot>
       <BrowserRouter>
-        <ColorModeScript />
-          <App />
+        <App />
       </BrowserRouter>
     </RecoilRoot>
   </QueryClientProvider>,

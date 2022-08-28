@@ -1,13 +1,11 @@
 
-import React, { useMemo } from "react";
-import { Box, Flex, HStack, IconButton, Spacer, Text, VStack } from "@chakra-ui/react";
-import NavigationItem from "./item";
-import { AiOutlineHome, AiOutlineGlobal, AiOutlineSound, AiOutlineBook, AiOutlineClockCircle, AiOutlineDownload } from "react-icons/ai";
+import { useMemo } from "react";
+import { AiOutlineBook, AiOutlineClockCircle, AiOutlineDownload, AiOutlineGlobal, AiOutlineHome, AiOutlineSound } from "react-icons/ai";
 import { MdOndemandVideo, MdVideoLibrary } from "react-icons/md";
-import { paths } from "../../utilities/constants";
 import { useRecoilState } from "recoil";
 import { navigationIsOpenAtom } from "../../data/atoms";
-import { CloseIcon } from "@chakra-ui/icons";
+import { paths } from "../../utilities/constants";
+import NavigationItem from "./item";
 
 export default function Navigation() {
 

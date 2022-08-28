@@ -1,4 +1,3 @@
-import { VStack } from "@chakra-ui/react";
 import { useEffect, useTransition } from "react";
 import { useSetRecoilState } from "recoil";
 import { sidePanelDidRenderAtom } from "../../data/atoms";
