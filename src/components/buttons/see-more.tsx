@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Flex } from "@chakra-ui/react";
+import { ButtonProps } from "@chakra-ui/react";
 
 export default function SeeMoreButton(props: ButtonProps) {
   return (

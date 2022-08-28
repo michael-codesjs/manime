@@ -13,7 +13,7 @@ export function Skeletons({ count = 1, className = "" } : SkeletonProps) {
     skeletons.push(
       <div
         key={x}
-        className={"bg-gray-200 animate-pulse w-full rounded-lg "+className}
+        className={"bg-gray-200 animate-pulse rounded-lg "+className}
       />
     )
   }

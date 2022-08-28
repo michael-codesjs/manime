@@ -1,7 +1,6 @@
 import { API } from "aws-amplify";
 import { QueryFunctionContext } from "react-query";
 import { PageResult } from "../../types";
-import { Page } from "../../types/api";
 
 export const getTrending = async (context: QueryFunctionContext<[string, { page: number, perPage: number }]>) => {
   

@@ -1,8 +1,6 @@
-import { Box, Center, Image, Stack, Text, VStack } from "@chakra-ui/react"
-import React from "react"
-import { AiOutlineArrowRight, AiOutlineCaretRight } from "react-icons/ai"
+import { AiOutlineArrowRight } from "react-icons/ai"
 import { useInView } from "react-intersection-observer"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import PlayButton from "../../../components/buttons/play"
 import { Media } from "../../../types/api"
 import { paths } from "../../../utilities/constants"
@@ -72,7 +70,7 @@ export function Anime({ media }: Props) {
           />
         </div>
         
-        <div className="w-full h-6 min-h-[24px] flex justify-between items-center">
+        <div className="w-full h-7 min-h-[28px] flex justify-between items-center">
          
           <p
             className="text-[10px] font-medium group-hover:font-semibold cursor-pointer"
@@ -85,7 +83,7 @@ export function Anime({ media }: Props) {
             {media.episodes} episodes
           </p>
 
-          <button className="flex justify-center items-center h-full w-6 rounded-full border bg-gray-50 group-hover:bg-gray-200 group-hover:scale-110 transition-all">
+          <button className="flex justify-center items-center h-full w-7 rounded-full bg-purple-600 text-white group-hover:bg-purple-700 group-hover:scale-110 transition-all">
             <AiOutlineArrowRight className="text-xs" />
           </button>
 

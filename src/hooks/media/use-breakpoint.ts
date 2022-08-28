@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { breakpoints as themeBreakpoints } from "../../utilities/constants";
 import { sortedEntries, withinRange } from "../../utilities/functions";
 import useWindowDimensions from "./use-window-dimensions";
