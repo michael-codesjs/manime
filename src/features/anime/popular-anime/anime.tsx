@@ -34,7 +34,7 @@ export function Anime({ media }: Props) {
         className={`cursor-pointer w-full md:w-20 min-w-[80px] h-40 md:h-[90px] rounded-lg relative overflow-hidden`}
       >
         <img
-          src={media.coverImage?.large!}
+          src={media.coverImage?.extraLarge!}
           alt={title + " cover"}
           className="absolute w-full h-full rounded-lg object-cover group-hover:scale-125 duration-200"
         />
@@ -82,10 +82,10 @@ export function Anime({ media }: Props) {
               }
             }
           >
-            {media.episodes || 0} episode{media.episodes !== 1 ? "" : "s"}
+            {media.episodes} episodes
           </p>
 
-          <button className="flex justify-center items-center h-full w-6 rounded-full border bg-gray-100 group-hover:bg-gray-200 group-hover:scale-110 transition-all">
+          <button className="flex justify-center items-center h-full w-6 rounded-full border bg-gray-50 group-hover:bg-gray-200 group-hover:scale-110 transition-all">
             <AiOutlineArrowRight className="text-xs" />
           </button>
 

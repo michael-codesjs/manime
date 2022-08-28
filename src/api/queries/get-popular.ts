@@ -35,6 +35,7 @@ const GRAPHQL_QUERY = `
           native
         }
         description
+        meanScore
         genres
         status
         bannerImage

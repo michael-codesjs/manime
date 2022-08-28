@@ -13,7 +13,12 @@ export const paths = {
 
 
 export const breakpoints = {
-  lg: 1088,
+ 
+  base: 0,
+  sm: 576,
   md: 960,
-  sm: 576
-}
+  lg: 1260
+ 
+};
+
+export const breakpointKeys = Object.keys(breakpoints);

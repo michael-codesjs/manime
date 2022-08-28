@@ -21,7 +21,7 @@ export function PopularAnime() {
       "isError"
     ],
     refetchInterval: 0,
-    retry: false,
+    retry: 3,
     retryOnMount: true,
     retryDelay: 0,
     refetchOnWindowFocus: false
@@ -36,7 +36,7 @@ export function PopularAnime() {
   }, [data]);
 
   const memoizedSkeletons = useMemo(() => {
-    return isLoading && <Skeletons />;
+    return  <Skeletons />;
   }, [isLoading]);
 
   return (
@@ -60,7 +60,7 @@ export function PopularAnime() {
           />
 
           <div className={"flex flex-row md:flex-col md:h-[240px] md:w-full md:overflow-scroll md:pb-8 space-x-6 md:space-x-0 md:space-y-5 p-[1px]"}>
-            {memoizedContent}
+            
             {memoizedSkeletons}
           </div>
 
