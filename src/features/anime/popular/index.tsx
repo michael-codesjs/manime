@@ -35,9 +35,7 @@ export function PopularAnime() {
     })
   }, [data]);
 
-  const memoizedSkeletons = useMemo(() => {
-    return isLoading && <Skeletons />;
-  }, [isLoading]);
+  const memoizedSkeletons = useMemo(() => <Skeletons />, []);
 
   return (
     <section className="w-full p-0 vstack space-y-4 md:space-y-0">
@@ -61,7 +59,7 @@ export function PopularAnime() {
 
           <div className={"flex flex-row md:flex-col md:h-[240px] md:w-full md:overflow-scroll md:pb-8 space-x-6 md:space-x-0 md:space-y-5 p-[1px]"}>
             {memoizedContent}
-            {memoizedSkeletons}
+            { isLoading && memoizedSkeletons}
           </div>
 
           <SeeMoreButton />

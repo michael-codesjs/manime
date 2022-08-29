@@ -6,21 +6,20 @@ import { Media } from "../../../types/api"
 import { paths } from "../../../utilities/constants"
 
 type Props = {
-  media: Media
+  media: Media,
+  className: string
 }
 
-export function Anime({ media }: Props) {
+export function Anime({ media, className }: Props) {
 
   const navigate = useNavigate();
 
   const title = (media.title?.english || media.title?.romaji || media.title?.native)!;
 
-  const { ref } = useInView();
-
   return (
     <article
-      aria-label="popular-anime"
-      className="group vstack space-y-4 sm:border sm:p-4 box-border rounded-lg"
+      aria-label="anime-intro-grid-item"
+      className={"group vstack "+className}
     >
 
       {/* anime cover image */}
@@ -29,7 +28,7 @@ export function Anime({ media }: Props) {
         style={{
           backgroundColor: media.coverImage?.color!
         }}
-        className={`cursor-pointer w-full h-40 rounded-lg relative overflow-hidden`}
+        className={`cursor-pointer w-full h-full relative overflow-hidden`}
       >
         <img
           src={media.coverImage?.extraLarge!}
@@ -50,18 +49,6 @@ export function Anime({ media }: Props) {
             }
           />
         </div>
-      </div>
-
-      <div className="vstack space-y-2 w-full">
-        <p
-          className={"text-[18px] h-5 w-full text-center overflow-hidden whitespace-nowrap md:whitespace-normal text-ellipsis leading-[120%] font-medium cursor-pointer group-hover:font-semibold transition-all"}
-          onClick={
-            () => {
-              navigate(paths.anime + "/" + media.id)
-            }
-          }
-        > {title} </p>
-
       </div>
 
     </article>

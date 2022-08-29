@@ -6,7 +6,7 @@ import { paths } from "./utilities/constants";
 
 export default function () {
   return (
-    <main className="flex flex-col overflow-x-hidden overflow-y-scroll space-y-12 py-6 md:pt-0">
+    <main className="flex flex-col overflow-x-hidden overflow-y-scroll space-y-8 py-6 md:pt-0">
       <Routes>
         <Route path={paths.home} element={<Home />} />
       </Routes>

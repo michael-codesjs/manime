@@ -21,8 +21,8 @@ export default function TrendingAnime() {
   const memoizedContent = useMemo(() => data && <Content data={data} />, [data]);
 
   return (
-    <section className="w-full vstack space-y-8">
-      { isLoading && memoizedSkeletons }
+    <section className="w-full max-w-[660px] self-center min-h-[380px] md:h-[500px] grid grid-cols-6 grid-rows-8 gap-2 rounded-none">
+      { isLoading &&  memoizedSkeletons }
       { memoizedContent }
     </section>
   )
