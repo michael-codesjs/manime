@@ -78,6 +78,13 @@ main>* {
   @apply flex flex-row items-start justify-start;
 }
 
+.avatars {
+  @apply flex;
+}
+.stacked-avatars {
+  @apply avatars -space-x-2;
+}
+
 @media (min-width: 576px) {
 
   #app {

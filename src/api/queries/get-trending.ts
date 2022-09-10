@@ -24,6 +24,10 @@ const GRAPHQL_QUERY = `
           english
           native
         }
+        status
+        season
+        chapters
+        seasonInt
         description
         genres
         status
@@ -51,6 +55,25 @@ const GRAPHQL_QUERY = `
         episodes
         type
         genres
+        characters(sort: RELEVANCE, perPage: 5) {
+          nodes {
+            id
+            name {
+              full
+              native
+            }
+            image {
+              large
+              medium
+            }
+          }
+        }
+        studios(isMain: true) {
+          nodes {
+            id
+            name
+          }
+        }
       }
     }
   }

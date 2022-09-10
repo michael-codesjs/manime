@@ -10,7 +10,7 @@ export default function TrendingAnime() {
     isLoading,
     isError,
     data
-  } = useQuery(["trending", { page: 1, perPage: 10 }], getTrending, {
+  } = useQuery(["trending", { page: 1, perPage: 12 }], getTrending, {
     enabled: true,
   });
 

@@ -62,7 +62,7 @@ export default function Navigation() {
   return (
     <div
       id="navigation"
-      className={"border-l fixed sm:relative top-0 left-0 bottom-0 right-0 sm:z-[1] sm:py-0 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-10 opacity-100" : "-z-10 opacity-0")}
+      className={"border-l fixed sm:relative top-0 left-0 bottom-0 right-0 sm:z-[1] sm:py-6 md:py-0 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-10 opacity-100" : "-z-10 opacity-0")}
     >
 
       <div

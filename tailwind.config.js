@@ -10,7 +10,8 @@ module.exports = {
         lg: "1360px"
       },
       colors: {
-        blackAlpha: "rgba(0,0,0,0.6)"
+        blackAlpha: "rgba(0,0,0,0.6)",
+        whiteAlpha: "rgba(255,255,255,0.2)"
       },
       keyframes: {
         "bounce-horizontal": {
