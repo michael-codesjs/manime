@@ -1,3 +1,4 @@
+import { FullLogo } from "../../components/brand";
 import HamburgerButton from "../../components/buttons/hamburger";
 import Search from "../search";
 
@@ -12,12 +13,7 @@ export default function Header() {
         id="brand"
         className="flex space-x-4 md:border-r p-6"
       >
-        <img
-          src="/anime-logo.jpg"
-          alt="logo"
-          className="w-8 min-w-[32px] h-8 rounded-full object-cover"
-        />
-        <h1 className="text-3xl font-bold tracking-wide"> anime </h1>
+        <FullLogo />
       </div>
 
       <div

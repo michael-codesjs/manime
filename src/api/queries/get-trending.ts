@@ -27,12 +27,19 @@ const GRAPHQL_QUERY = `
         description
         genres
         status
+        isAdult
+        averageScore
         bannerImage
         coverImage {
           extraLarge
           large
           medium
           color
+        }
+        isAdult
+        tags {
+          name
+          id
         }
         trailer {
           id

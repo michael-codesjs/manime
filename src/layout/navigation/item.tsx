@@ -30,11 +30,13 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
     <Link
       to={address}
       onClick={postLinkClick}
-      className={"hstack space-x-5 w-full items-center justify-center relative "+(isActive ? "text-red-600" : "text-gray-700")}
+      className={"hstack space-x-5 w-full items-center justify-center relative"}
     >
-      { icon }
-      <p className={"w-full text-[13px] capitalize text-inherit "+(isActive ? "font-semibold" : "font-normal")}> {name} </p>
-
+      <p className={isActive ? "text-red-500" : "text-gray-600"}> {icon} </p>
+      <p className={"w-full text-[14px] capitalize text-inherit " + (isActive ? "font-semibold text-red-500" : "font-normal")}> {name} </p>
+      <div className="relative">
+        <div className={"w-1 rounded-full bg-red-500 z-10 absolute -translate-x-[1px] " + (isActive ? "transition-all duration-200 h-4 translate-y-0" : "h-0 translate-y-2")} />
+      </div>
     </Link>
   )
 }

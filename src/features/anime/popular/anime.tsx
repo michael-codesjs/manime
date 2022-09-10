@@ -83,7 +83,7 @@ export function Anime({ media }: Props) {
             {media.episodes} episodes
           </p>
 
-          <button className="flex justify-center items-center h-full w-7 rounded-full bg-purple-600 text-white group-hover:bg-purple-700 group-hover:scale-110 transition-all">
+          <button className="flex justify-center items-center h-full w-7 rounded-full bg-gray-100 text-blue-500  group-hover:scale-110 transition-all">
             <AiOutlineArrowRight className="text-xs" />
           </button>
 
