@@ -1,12 +1,16 @@
 import { API } from "aws-amplify";
 import { QueryFunctionContext } from "react-query";
 import { PageResult } from "../../types";
+import { getCurrentSeason } from "../../utilities/functions";
 
 export const getTrending = async (context: QueryFunctionContext<[string, { page: number, perPage: number }]>) => {
   
 const date = new Date();
 date.setFullYear(date.getFullYear()-2);
 const fuzzyStartDate = date.getFullYear()+date.getDate()+date.getDay(); // only get recent anime
+
+const season = getCurrentSeason();
+const year = new Date().getFullYear();
 
 const GRAPHQL_QUERY = `
   query($page: Int, $perPage: Int, $search: String) {
@@ -17,7 +21,7 @@ const GRAPHQL_QUERY = `
         lastPage
         hasNextPage
       }
-      media(search: $search, type: ANIME, sort: TRENDING_DESC) {
+      media(search: $search, type: ANIME, season:${season}, seasonYear:${year}, sort: POPULARITY_DESC) {
         id
         title {
           romaji

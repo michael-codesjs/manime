@@ -15,12 +15,25 @@ export const getNearestBreakPointValue = <T = any>(values: Partial<Record<Breakp
   /* Returns the nearest breakpoint value below a certain breakpoint if that breakpoints value is undefined */
   const breakpoints = Object.keys(values);
   let index = breakpoints.indexOf(breakpoint);
-  if(index !== -1) return values[breakpoint];
+  if (index !== -1) return values[breakpoint];
   index = breakpointKeys.indexOf(breakpoint);
-  while(index>=0) {
+  while (index >= 0) {
     const key = breakpointKeys[index];
-    if(key in values) break;
-    index-=1;
+    if (key in values) break;
+    index -= 1;
   }
   return values[breakpointKeys[index] as Breakpoints];
+}
+
+export const getCurrentSeason = () => {
+
+  const now = new Date();
+  const month = now.getMonth() + 1;  // plus one because January is index 0
+
+  return (
+    month > 3 && month < 6 ? 'SPRING' :
+    month > 6 && month < 9 ? 'SUMMER' :
+    month > 9 && month < 12 ? 'FALL' :
+    'WINTER' // default
+  );
 }
