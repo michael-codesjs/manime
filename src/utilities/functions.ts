@@ -1,6 +1,10 @@
 import { Breakpoints } from "../types";
 import { breakpointKeys, breakpoints } from "./constants";
 
+export function unStringfy<T>(jsonString: string): T {
+  return JSON.parse(jsonString) as T;
+}
+
 export const withinRange = (number: number, range: [number, number]) => number >= range[0] && number <= range[1];
 
 export const sortedEntries = <T = any>(obj: { [k: string]: T }): Array<[string, T]> => {

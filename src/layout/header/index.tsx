@@ -1,4 +1,5 @@
 import { FullLogo } from "../../components/brand";
+import ColorModeSwitcher from "../../components/buttons/color-mode-switcher";
 import HamburgerButton from "../../components/buttons/hamburger";
 import Search from "../search";
 
@@ -7,11 +8,11 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="border-b md:border-b-0"
+      className="border-b dark:bg-gray-800 md:border-b-0"
     >
       <div
         id="brand"
-        className="flex space-x-4 md:border-r p-6"
+        className="flex space-x-4 md:border-r dark:md:border-gray-700 p-6"
       >
         <FullLogo />
       </div>
@@ -23,9 +24,12 @@ export default function Header() {
         <div
           id="header-portal-container"
           className="w-full h-full"
-          // on larger screens use this via a portal for all your extra content like tabs.
+        // on larger screens use this via a portal for all your extra content like tabs.
         />
-        <HamburgerButton />
+        <div className="flex space-x-4">
+          <ColorModeSwitcher />
+          <HamburgerButton />
+        </div>
       </div>
 
       <Search />
