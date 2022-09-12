@@ -1,5 +1,3 @@
-import { AiOutlineArrowRight } from "react-icons/ai"
-import { useInView } from "react-intersection-observer"
 import { useNavigate } from "react-router-dom"
 import PlayButton from "../../../components/buttons/play"
 import { Media } from "../../../types/api"

@@ -21,7 +21,7 @@ export default function Skeletons() {
             </div>
             <div className="flex items-center justify-between w-full h-7 min-h-[28px] space-x-5">
               <CustomSkeletons className={"h-[10px] min-h-[12px] w-12 rounded-full"} />
-              <CustomSkeletons className={"h-full w-7 rounded-full bg-purple-200"} />
+              <CustomSkeletons className={"h-full w-7 rounded-3xl bg-blue-200"} />
             </div>
           </div>
         </div>

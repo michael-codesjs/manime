@@ -4,7 +4,7 @@ import { getTrending } from "../../../api/queries";
 import Content from "./content";
 import Skeletons from "./skeletons";
 
-export default function TrendingAnime() {
+export default function HomeCarousel() {
 
   const {
     isLoading,

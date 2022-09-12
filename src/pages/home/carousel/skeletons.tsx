@@ -5,7 +5,7 @@ export default function Skeletons() {
 
   return (
     <>
-      <BaseSkeletons className={"h-60 sm:h-60 md:h-[340px] rounded-2xl"} />
+      <BaseSkeletons className={"h-[320px] min-h-[320px] lg:h-[340px] rounded-lg"} />
     </>
   )
 

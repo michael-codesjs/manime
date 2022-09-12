@@ -21,7 +21,7 @@ const GRAPHQL_QUERY = `
         lastPage
         hasNextPage
       }
-      media(search: $search, type: ANIME, season:${season}, seasonYear:${year}, sort: POPULARITY_DESC) {
+      media(search: $search, type: ANIME, sort: TRENDING_DESC) {
         id
         title {
           romaji

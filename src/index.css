@@ -780,6 +780,10 @@ video {
   min-height: 12px;
 }
 
+.min-h-\[320px\] {
+  min-height: 320px;
+}
+
 .w-2 {
   width: 0.5rem;
 }
@@ -1127,6 +1131,10 @@ video {
   border-radius: 1rem;
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .border-2 {
   border-width: 2px;
 }
@@ -1212,6 +1220,11 @@ video {
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
 }
 
 .from-cyan-200 {
