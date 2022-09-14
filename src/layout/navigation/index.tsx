@@ -1,4 +1,3 @@
-
 import { useMemo } from "react";
 import { AiOutlineBook, AiOutlineClockCircle, AiOutlineDownload, AiOutlineGlobal, AiOutlineHome, AiOutlineSound } from "react-icons/ai";
 import { MdOndemandVideo, MdVideoLibrary } from "react-icons/md";
@@ -41,7 +40,7 @@ export default function Navigation() {
       return (
         <div
           key={subNavigationItem}
-          className="flex vstack space-y-8 w-full pl-8"
+          className="flex flex-col space-y-8 w-full pl-8"
         >
           <p className="text-sm text-gray-900 dark:text-gray-100 font-bold uppercase"> {subNavigationItem} </p>
           <div className="w-full h-full vstack space-y-2">
@@ -53,7 +52,6 @@ export default function Navigation() {
               })
             }
           </div>
-
         </div>
       )
     })
@@ -62,12 +60,35 @@ export default function Navigation() {
   return (
     <div
       id="navigation"
-      className={"dark:border-gray-700 fixed sm:relative top-0 left-0 bottom-0 right-0 sm:z-[1] sm:py-6 md:py-0 sm:opacity-100 sm:border-r " + (navigationIsOpen ? "z-10 opacity-100" : "-z-10 opacity-0")}
+      className={`
+      fixed
+      sm:relative
+      top-0
+      left-0
+      bottom-0
+      right-0
+      sm:z-[1]
+      sm:py-5
+      md:py-0
+      sm:opacity-100
+      sm:dark:bg-gray-900
+      sm:border-r-2
+      sm:dark:border-gray-800
+      ${navigationIsOpen ? "z-10 opacity-100" : "-z-10 opacity-0"}
+    `}
     >
-
       <div
         // OVERLAY
-        className={"overlay w-full h-full sm:hidden backdrop-blur-sm bg-blackAlpha transition-all " + (navigationIsOpen ? "opacity-100" : "opacity-0")}
+        className={`
+          overlay
+          w-full
+          h-full
+          sm:hidden
+          backdrop-blur-sm
+          bg-blackAlpha
+          transition-[opacity]
+          ${navigationIsOpen ? "opacity-100" : "opacity-0"}
+        `}
         onClick={
           () => setNavigationIsOpen(false)
         }
@@ -75,20 +96,22 @@ export default function Navigation() {
 
       <nav
         className={`
-        w-[300px]
-        sm:w-full
-        h-full
-        vstack
-        space-y-8
-        fixed
-        sm:relative
-        top-0
-        sm:right-0
-        bg-white
-        dark:bg-gray-800
-        transition-all
-        ${navigationIsOpen ? "right-0" : "-right-[300px]"}
-      `}
+          w-[300px]
+          sm:w-full
+          h-full
+          flex 
+          flex-col
+          space-y-8
+          fixed
+          sm:relative
+          top-0
+          sm:right-0
+          bg-white
+          dark:bg-gray-900
+          transition-[right]
+          duration-200
+          ${navigationIsOpen ? "right-0" : "-right-[300px]"}
+        `}
       >
 
         {NAVIGATION_CONTENT}
@@ -103,7 +126,6 @@ export default function Navigation() {
         </div>
 
       </nav>
-
     </div>
   )
 

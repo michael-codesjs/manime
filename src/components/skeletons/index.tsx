@@ -14,7 +14,7 @@ export function Skeletons({ count = 1, className = "", children } : SkeletonProp
     skeletons.push(
       <div
         key={x}
-        className={"bg-gray-200 animate-pulse rounded-lg "+className}
+        className={"bg-gray-200 dark:bg-gray-800 animate-pulse rounded-lg "+className}
         children={children}
       />
     )

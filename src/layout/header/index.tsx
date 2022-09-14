@@ -8,11 +8,11 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="border-b dark:bg-gray-800 md:border-b-0"
+      className="border-b dark:border-b-0 sm:dark:border-2 sm:dark:border-gray-800 dark:bg-gray-900 md:dark:border-0 md:border-b-0"
     >
       <div
         id="brand"
-        className="flex space-x-4 md:border-r dark:md:border-gray-700 p-6"
+        className="flex space-x-4 md:border-r-2 md:dark:border-gray-800 p-6"
       >
         <FullLogo />
       </div>
@@ -26,7 +26,7 @@ export default function Header() {
           className="w-full h-full"
         // on larger screens use this via a portal for all your extra content like tabs.
         />
-        <div className="flex space-x-4">
+        <div className="flex space-x-3">
           <ColorModeSwitcher />
           <HamburgerButton />
         </div>

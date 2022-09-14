@@ -1,8 +1,13 @@
 import { Breakpoints } from "../types";
 import { breakpointKeys, breakpoints } from "./constants";
 
-export function unStringfy<T>(jsonString: string): T {
-  return JSON.parse(jsonString) as T;
+export function unStringfy<T>(jsonString: string): T | string {
+  try {
+    const object = JSON.parse(jsonString) as T;
+    return object;
+  } catch(error) {
+    return jsonString;
+  }
 }
 
 export const withinRange = (number: number, range: [number, number]) => number >= range[0] && number <= range[1];

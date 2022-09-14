@@ -1,7 +1,7 @@
 import { AtomEffect, DefaultValue } from "recoil";
 import { unStringfy } from "../utilities/functions";
 
-export function withLocalPersistEffect(options?: { onLocalStorageGetItem?: ((items:any) => any)}) {
+export function withLocalPersistEffect(options?: { onLocalStorageGetItem?: (items:any) => any }) {
   
   const onLocalStorageGetItem = options && options.onLocalStorageGetItem;
   
@@ -9,14 +9,18 @@ export function withLocalPersistEffect(options?: { onLocalStorageGetItem?: ((ite
     let storedItems = localStorage.getItem(node.key);
     if (storedItems != null) {
       storedItems = unStringfy(storedItems);
+      console.log("stored items:", storedItems);
       if(onLocalStorageGetItem) {
         // do whatever you want you with the data gotten from localStoraeg before it's set to the atom.
         // my use case is re-instantiating alarms for now since methods are not persisted in json strings :(
         storedItems = onLocalStorageGetItem(storedItems);
       }
+      // console.clear();
+      console.log("setting self", storedItems);
       setSelf(storedItems);
     }
     onSet(newItems => {
+      console.log("onset")
       if (newItems instanceof DefaultValue) {
         localStorage.removeItem(node.key);
       } else {

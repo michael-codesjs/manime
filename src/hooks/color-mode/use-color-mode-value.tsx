@@ -8,7 +8,7 @@ export default function useColorModeValue<T = any>(lightModeValue: T, darkModeVa
   const { colorMode } = useColorMode();
 
   const value = useMemo(() => {
-    return colorMode === "light" ? lightModeValue : darkModeValue; 
+    return colorMode === "dark" ? darkModeValue : lightModeValue; 
   },[colorMode]);
 
   return value;

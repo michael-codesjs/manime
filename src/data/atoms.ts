@@ -1,20 +1,27 @@
 import { atom } from "recoil";
 import { withLocalPersistEffect } from "./atom-effects";
 
-export const colorModeAtom = atom<"light" | "dark">({
+function changeColorMode(value: "light" | "dark" | null) {
+  const root = document.documentElement;
+  if(value === "dark") {
+    root.classList.add("dark");
+    root.classList.remove("light")
+  } else {
+    root.classList.remove("dark");
+    root.classList.add("light")
+  }
+  return value;
+}
+
+export const colorModeAtom = atom<"light" | "dark" | null>({
   key: "color-mode",
-  default: "light",
+  default: null,
   effects: [
-    withLocalPersistEffect(),
+    withLocalPersistEffect({
+      onLocalStorageGetItem: changeColorMode
+    }),
     ({ onSet }) => {
-      onSet(value => {
-        const root = document.documentElement;
-        if(value === "dark") { // https://tailwindcss.com/docs/dark-mode#supporting-system-preference-and-manual-selection
-          root.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-      })
+      onSet(value => changeColorMode(value))
     }
   ]
 });

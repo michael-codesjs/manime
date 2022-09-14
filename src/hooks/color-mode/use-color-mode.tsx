@@ -8,7 +8,7 @@ export default function useColorMode() {
   const [colorMode, setColorMode] = useRecoilState(colorModeAtom);
 
   const toggleColorMode = () => {
-    setColorMode(value => value === "light" ? "dark" : "light");
+    setColorMode(value => value !== "light" ? "light" : "dark");
   }
 
   return {

@@ -18,7 +18,21 @@ export default function ColorModeSwitcher() {
 
   return (
     <button
-      className="w-9 h-9 flex items-center justify-center rounded-full border dark:bg-gray-900 dark:text-white dark:border-0 hover:bg-gray-200 dark:hover:bg-gray-700"
+      className={`
+      w-9
+      h-9
+      flex
+      items-center
+      justify-center
+      rounded-full
+      border
+      text-gray-700
+      dark:bg-gray-800
+      dark:text-white
+      dark:border-0
+      hover:bg-gray-200
+      dark:hover:bg-gray-700
+      `}
       onClick={toggleColorMode}
     >
       { icon }

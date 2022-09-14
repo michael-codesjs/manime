@@ -4,6 +4,7 @@
 
 * {
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 *::-webkit-scrollbar {
@@ -55,16 +56,6 @@ header #search {
 
 #navigation {
   grid-area: navigation;
-  transition: all;
-}
-
-#navgation .overlay {
-  transition-duration: 0.3s;
-}
-
-#navigation nav {
-  transition: all;
-  transition-duration: 0.3s;
 }
 
 main>* {

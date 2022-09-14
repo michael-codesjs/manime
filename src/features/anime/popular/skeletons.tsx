@@ -10,7 +10,7 @@ export default function Skeletons() {
       skeletons.push(
         <div
           key={x}
-          className={"flex flex-col md:flex-row w-full min-w-[220px] space-y-4 md:space-y-0 md:space-x-4 border p-4 md:p-0 md:border-0 shadow-sm md:shadow-none rounded-lg"}
+          className={"flex flex-col md:flex-row w-full min-w-[220px] space-y-4 md:space-y-0 md:space-x-4 border md:dark:bg-transparent dark:border-gray-800 p-4 md:p-0 md:border-0 shadow-sm md:shadow-none rounded-lg"}
         >
           <CustomSkeletons className={"w-full md:w-20 min-w-[80px] h-40 md:h-[90px] rounded-xl"} />
           <div className="vstack space-y-2 w-full">
