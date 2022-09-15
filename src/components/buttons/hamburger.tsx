@@ -10,7 +10,22 @@ export default function HamburgerButton() {
   return (
     <button
       aria-label="menu-button"
-      className="py-2 px-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 sm:hidden"
+      className={`
+      w-9
+      h-9
+      flex
+      items-center
+      justify-center
+      rounded-lg
+      bg-gray-200
+      text-gray-700
+      dark:bg-gray-800
+      dark:text-white
+      dark:border-0
+      hover:bg-gray-200
+      dark:hover:bg-gray-700
+      sm:hidden
+      `}
       onClick={() => setNavigationIsOpen(isOpen => !isOpen)}
     > <AiOutlineMenu /> </button>
   )

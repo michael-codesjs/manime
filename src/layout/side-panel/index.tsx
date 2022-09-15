@@ -24,9 +24,11 @@ export default function SidePanel() {
         justify-start
         px-6
         py-0
-        border-l-[1px]
+        border-l-2
+        dark:border-gray-800
         space-y-8
         overflow-y-scroll
+        dark:bg-gray-900
       `}
     />
   )

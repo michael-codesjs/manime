@@ -1,6 +1,27 @@
 import { Breakpoints } from "../types";
 import { breakpointKeys, breakpoints } from "./constants";
 
+export function changeColorMode(value: "light" | "dark" | null) {
+  const root = document.documentElement;
+  if(value === "dark") {
+    root.classList.add("dark");
+    root.classList.remove("light")
+  } else {
+    root.classList.remove("dark");
+    root.classList.add("light")
+  }
+  return value;
+}
+
+export function unStringfy<T>(jsonString: string): T | string {
+  try {
+    const object = JSON.parse(jsonString) as T;
+    return object;
+  } catch(error) {
+    return jsonString;
+  }
+}
+
 export const withinRange = (number: number, range: [number, number]) => number >= range[0] && number <= range[1];
 
 export const sortedEntries = <T = any>(obj: { [k: string]: T }): Array<[string, T]> => {
