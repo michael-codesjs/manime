@@ -38,11 +38,11 @@ export function PopularAnime() {
   const memoizedSkeletons = useMemo(() => <Skeletons />, []);
 
   return (
-    <section className="w-full p-0 vstack space-y-4 md:space-y-0">
+    <section className="w-full flex flex-col md:h-1/2 box-border p-0 vstack space-y-4 md:space-y-0">
 
       <h2 className="w-full px-7 md:px-0 text-lg font-semibold dark:text-gray-100">Popular Anime</h2>
 
-      <div className="flex flex-row md:flex-col space-x-6 md:space-x-0 md:space-y-3 w-full relative">
+      <div className="flex flex-row h-full md:flex-col space-x-6 md:space-x-0 md:space-y-3 w-full relative">
         <div className="flex flex-row md:flex-col items-center w-full overflow-x-scroll md:overflow-x-hidden px-7 md:px-0 space-x-0 md:space-y-3">
 
           <ScrollFade
@@ -57,7 +57,7 @@ export function PopularAnime() {
             className={"md:hidden"}
           />
 
-          <div className={"flex flex-row md:flex-col md:h-[240px] md:w-full md:overflow-scroll md:pb-8 space-x-6 md:space-x-0 md:space-y-5 p-[1px]"}>
+          <div className={"flex flex-row md:flex-col md:w-full md:overflow-scroll md:pb-8 space-x-6 md:space-x-0 md:space-y-5 p-[1px]"}>
             { memoizedContent }
             { isLoading && memoizedSkeletons }
           </div>

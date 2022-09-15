@@ -1,4 +1,5 @@
 import { Breakpoints } from "../types";
+import { Media } from "../types/api";
 import { breakpointKeys, breakpoints } from "./constants";
 
 export function changeColorMode(value: "light" | "dark" | null) {
@@ -58,3 +59,5 @@ export const getCurrentSeason = () => {
     'WINTER' // default
   );
 }
+
+export const getTitle = (title: Media["title"]) => (title?.english || title?.romaji || title?.native)!

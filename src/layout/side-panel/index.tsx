@@ -27,7 +27,7 @@ export default function SidePanel() {
         border-l-2
         dark:border-gray-800
         space-y-8
-        overflow-y-scroll
+        overflow-hidden
         dark:bg-gray-900
       `}
     />

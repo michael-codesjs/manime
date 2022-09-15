@@ -1,5 +1,6 @@
 import { AiOutlineArrowRight } from "react-icons/ai"
 import { useNavigate } from "react-router-dom"
+import AnimeCover from "../../../components/anime/cover"
 import PlayButton from "../../../components/buttons/play"
 import { Media } from "../../../types/api"
 import { paths } from "../../../utilities/constants"
@@ -41,7 +42,6 @@ export function Anime({ media }: Props) {
         md:shadow-none
       `}
     >
-
       {/* anime cover image */}
       <div
         aria-label="anime-cover"
