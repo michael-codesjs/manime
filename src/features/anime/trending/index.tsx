@@ -3,6 +3,7 @@ import { getTrending } from "../../../api/queries/get-trending-anime";
 import Skeletons from "./skeletons";
 import { useMemo } from "react";
 import Anime from "./anime";
+import { HiArrowRight } from "react-icons/hi";
 
 
 
@@ -50,7 +51,7 @@ export default function TrendingAnime() {
           md:grid-cols-3
           lg:grid-cols-5
           gap-x-4
-          gap-y-4
+          gap-y-6
         `}
       >
         {memoizedContent}

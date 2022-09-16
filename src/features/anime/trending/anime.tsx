@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import AnimeCover from "../../../components/anime/cover"
 import { Media, MediaStatus } from "../../../types/api"
 import { paths } from "../../../utilities/constants"
@@ -19,7 +19,7 @@ export default function Anime({ media }: Props) {
   return (
     <div className="group flex flex-col space-y-4 rounded-lg">
       <AnimeCover media={media}>
-        <p className="h-0 bg-green-500 sm:bg-blue-600 md:bg-gray-600 lg:bg-red-600 bg-purple-600" /> {/* so tailwind can include these colors */}
+        <p className="h-0 bg-green-500 bg-blue-600 bg-gray-600 lg:bg-red-600 bg-purple-600" /> {/* so tailwind can include these colors */}
         <div className="w-full flex py-3 px-3">
           <p
             className={`
@@ -36,31 +36,28 @@ export default function Anime({ media }: Props) {
               cursor-pointer
             `}
           >
-            {media.status}
+            {media.status!.replace(/_/g, " ")}
           </p>
         </div>
       </AnimeCover>
       <div className="vstack space-y-2">
-        <p
+        <Link
+          to={paths.anime + "/" + media.id}
           className={`
-              w-full
-              text-[14px]
-              dark:text-gray-200
-              text-gray-900
-              text-ellipsis
-              leading-[120%]
-              font-medium
-              cursor-pointer
-              group-hover:font-semibold
-              hover:underline
-              transition-all
-            `}
-          onClick={
-            () => {
-              navigate(paths.anime + "/" + media.id)
-            }
-          }
-        > {title} </p>
+            w-full
+            text-[14px]
+            block
+            dark:text-gray-200
+            text-gray-900
+            text-ellipsis
+            leading-[120%]
+            font-medium
+            cursor-pointer
+            group-hover:font-semibold
+            hover:underline
+            transition-all
+          `}
+        > {title} </Link>
       </div>
     </div>
   )

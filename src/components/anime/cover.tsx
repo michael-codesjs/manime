@@ -22,7 +22,7 @@ export default function AnimeCover({ media, children }: Props) {
         backgroundColor: media.coverImage?.color!
       }
       }
-      className={`cursor-pointer w-full h-40 rounded-lg relative overflow-hidden`}
+      className={`cursor-pointer w-full h-48 rounded-lg relative overflow-hidden`}
     >
       <img
         src={media.coverImage?.extraLarge!}
