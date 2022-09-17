@@ -1,17 +1,17 @@
 import { useMemo } from "react";
 import { useQuery } from "react-query";
-import { getPopular } from "../../../api/queries";
+import { getPopularManga } from "../../../api/queries/get-popular-mange";
 import SeeMoreButton from "../../../components/buttons/see-more";
 import ScrollFade from "../../../components/scroll-fade";
-import { Anime } from "./anime";
+import { Anime } from "./manga";
 import Skeletons from "./skeletons";
 
-export function PopularAnime() {
+export function PopularManga() {
 
   const {
     isLoading,
     data,
-  } = useQuery(["popular-anime", { page: 1, perPage: 8 }], getPopular, {
+  } = useQuery(["popular-manga", { page: 1, perPage: 8 }], getPopularManga, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
@@ -40,7 +40,7 @@ export function PopularAnime() {
   return (
     <section className="w-full flex flex-col box-border p-0 vstack space-y-6 md:space-y-0">
 
-      <h2 className="w-full px-7 md:px-0 text-lg font-semibold dark:text-gray-100">Popular Anime</h2>
+      <h2 className="w-full px-7 md:px-0 text-lg font-semibold dark:text-gray-100"> Popular Manga </h2>
 
       <div className="flex flex-row h-full md:flex-col space-x-6 md:space-x-0 md:space-y-3 w-full relative">
         <div className="flex flex-row md:flex-col items-center w-full overflow-x-scroll md:overflow-x-hidden px-7 md:px-0 space-x-0 md:space-y-3">

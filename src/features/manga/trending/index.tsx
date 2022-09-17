@@ -4,15 +4,16 @@ import Skeletons from "./skeletons";
 import { useMemo } from "react";
 import Anime from "./anime";
 import { HiArrowRight } from "react-icons/hi";
+import { getTrendingManga } from "../../../api/queries/get-trending-manga";
 
 
 
-export default function TrendingAnime() {
+export default function TrendingManga() {
 
   const {
     isLoading,
     data,
-  } = useQuery(["trending-anime", { page: 1, perPage: 5 }], getTrending, {
+  } = useQuery(["trending-manga", { page: 1, perPage: 5 }], getTrendingManga, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
@@ -39,7 +40,7 @@ export default function TrendingAnime() {
   return (
     <div className="vstack space-y-6">
       <div className="w-full flex space-x-4 justify-between items-center">
-        <h2 className="w-full text-lg font-semibold dark:text-gray-100">Trending Anime</h2>
+        <h2 className="w-full text-lg font-semibold dark:text-gray-100">Trending Manga</h2>
         <p className="text-blue-600 text-sm underline font-medium"> more </p>
       </div>
       <div

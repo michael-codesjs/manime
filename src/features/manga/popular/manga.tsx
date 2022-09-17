@@ -48,7 +48,7 @@ export function Anime({ media }: Props) {
         style={{
           backgroundColor: media.coverImage?.color!
         }}
-        className={`cursor-pointer w-full md:w-20 min-w-[80px] h-40 md:h-[92px] rounded-lg relative overflow-hidden`}
+        className={`cursor-pointer w-full md:w-20 min-w-[80px] h-40 md:h-[90px] rounded-lg relative overflow-hidden`}
       >
         <img
           src={media.coverImage?.extraLarge!}
