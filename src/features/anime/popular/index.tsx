@@ -38,7 +38,7 @@ export function PopularAnime() {
   const memoizedSkeletons = useMemo(() => <Skeletons />, []);
 
   return (
-    <section className="w-full flex flex-col box-border p-0 vstack space-y-6 md:space-y-0">
+    <section className="w-full flex flex-col md:h-1/2 box-border p-0 vstack space-y-4 md:space-y-0">
 
       <h2 className="w-full px-7 md:px-0 text-lg font-semibold dark:text-gray-100">Popular Anime</h2>
 

@@ -12,7 +12,7 @@ export default function TrendingAnime() {
   const {
     isLoading,
     data,
-  } = useQuery(["trending-anime", { page: 1, perPage: 5 }], getTrending, {
+  } = useQuery(["trending-anime", { page: 1, perPage: 7 }], getTrending, {
     enabled: true,
     cacheTime: Infinity,
     refetchOnMount: false,
