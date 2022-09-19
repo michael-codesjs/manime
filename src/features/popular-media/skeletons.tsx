@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Skeletons as CustomSkeletons } from "../../../components/skeletons";
+import { Skeletons as CustomSkeletons } from "../../components/skeletons";
 
 export default function Skeletons() {
 

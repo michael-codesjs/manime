@@ -1,9 +1,8 @@
 import { AiOutlineArrowRight } from "react-icons/ai"
-import { useNavigate } from "react-router-dom"
-import AnimeCover from "../../../components/anime/cover"
-import PlayButton from "../../../components/buttons/play"
-import { Media } from "../../../types/api"
-import { paths } from "../../../utilities/constants"
+import { Link, useNavigate } from "react-router-dom"
+import PlayButton from "../../components/buttons/play"
+import { Media } from "../../types/api"
+import { paths } from "../../utilities/constants"
 
 type Props = {
   media: Media
@@ -48,7 +47,7 @@ export function Anime({ media }: Props) {
         style={{
           backgroundColor: media.coverImage?.color!
         }}
-        className={`cursor-pointer w-full md:w-20 min-w-[80px] h-40 md:h-[90px] rounded-lg relative overflow-hidden`}
+        className={`cursor-pointer w-full md:w-20 min-w-[80px] h-40 md:h-[92px] rounded-lg relative overflow-hidden`}
       >
         <img
           src={media.coverImage?.extraLarge!}
@@ -84,8 +83,10 @@ export function Anime({ media }: Props) {
 
       <div className="vstack space-y-2 w-full">
         <div className="vstack space-y-1 w-full">
-          <p
+          <Link
+            to={paths.anime + "/" + media.id}
             className={`
+              block
               h-4
               w-full
               text-[14px]
@@ -98,15 +99,11 @@ export function Anime({ media }: Props) {
               leading-[120%]
               font-medium
               cursor-pointer
-              group-hover:font-semibold
+              group-hover:font-
+              hover:underline
               transition-all
             `}
-            onClick={
-              () => {
-                navigate(paths.anime + "/" + media.id)
-              }
-            }
-          > {title} </p>
+          > {title} </Link>
           <p
             className={`
               text-xs
@@ -126,15 +123,20 @@ export function Anime({ media }: Props) {
         <div className="w-full h-7 min-h-[28px] flex justify-between items-center">
 
           <p
-            className="text-[10px] text-gray-900 dark:text-gray-100 font-medium group-hover:font-semibold cursor-pointer"
+            className={`
+              text-[10px]
+              text-gray-900
+              dark:text-gray-100
+              font-medium
+              group-hover:font-semibold
+              cursor-pointer
+            `}
             onClick={
               () => {
                 navigate(paths.anime + "/" + media.id + "#episodes")
               }
             }
-          >
-            {media.episodes} episodes
-          </p>
+          > {media.episodes} episodes </p>
 
           <button
             className={`

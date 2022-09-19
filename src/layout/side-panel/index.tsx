@@ -21,12 +21,13 @@ export default function SidePanel() {
     <aside
       id={"side-panel"}
       className={`
-        justify-start
+        grid
+        grid-rows-2
+        gap-y-10
         px-6
-        py-0
+        md:pb-12
         border-l-2
         dark:border-gray-800
-        space-y-8
         overflow-hidden
         dark:bg-gray-900
       `}

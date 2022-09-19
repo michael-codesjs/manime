@@ -33,18 +33,16 @@ export const sortedEntries = <T = any>(obj: { [k: string]: T }): Array<[string, 
 
 export const intersection = <T = any>(array1: Array<T>, array2: Array<T>) => array1.filter(key => array2.includes(key));
 
-export const getNearestBreakPointValue = <T = any>(values: Partial<Record<Breakpoints, T>>, breakpoint: Breakpoints) => {
-  /* Returns the nearest breakpoint value below a certain breakpoint if that breakpoints value is undefined */
-  const breakpoints = Object.keys(values);
-  let index = breakpoints.indexOf(breakpoint);
-  if (index !== -1) return values[breakpoint];
-  index = breakpointKeys.indexOf(breakpoint);
-  while (index >= 0) {
+export const getNearestBreakPointValue = <T = any>(values: Partial<Record<Breakpoints, T>>, breakpoint: Breakpoints): T | undefined => {
+  /* Returns nearest breakpoint value if one does not exist for the desired breakpoint */
+  if(breakpoint in values) return values[breakpoint]!; // value exists :)
+  let index = breakpointKeys.indexOf(breakpoint);
+  while (index >= 0) { // look for nearest value below desired breakpoint
     const key = breakpointKeys[index];
     if (key in values) break;
     index -= 1;
   }
-  return values[breakpointKeys[index] as Breakpoints];
+  return values[breakpointKeys[index] as Breakpoints] as T;
 }
 
 export const getCurrentSeason = () => {

@@ -1,6 +1,8 @@
+import SidePanelable from "../../components/miscellanous/side-panelable";
 import TrendingAnime from "../../features/anime/trending";
+import { PopularMedia } from "../../features/popular-media";
+import { MediaType } from "../../types/api";
 import Carousel from "./carousel";
-import PopularAnime from "./popular-anime";
 
 export default function Home() {
 
@@ -8,7 +10,14 @@ export default function Home() {
     <>
       <Carousel />
       <TrendingAnime />
-      <PopularAnime />
+      <SidePanelable
+        breakpoint="md"
+        children={<PopularMedia type={MediaType.Anime} />}
+      />
+      <SidePanelable
+        breakpoint="md"
+        children={<PopularMedia type={MediaType.Manga} />}
+      />
     </>
   )
 
