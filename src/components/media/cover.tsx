@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Media } from "../../types/api"
-import { paths } from "../../utilities/constants";
-import { getTitle } from "../../utilities/functions"
+import { Media } from "../../types/api";
 import PlayButton from "../buttons/play";
 
 
@@ -13,7 +11,6 @@ type Props = {
 export default function AnimeCover({ media, children }: Props) {
 
   const navigate = useNavigate();
-  const title = getTitle(media.title);
 
   return (
     <div
@@ -52,7 +49,7 @@ export default function AnimeCover({ media, children }: Props) {
         <PlayButton
           onClick={
             () => {
-              navigate(paths.anime + "/" + media.id + "#play")
+              navigate(`${media.type?.toLowerCase()}/` + media.id + "#play")
             }
           }
         />

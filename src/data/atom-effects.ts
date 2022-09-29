@@ -9,7 +9,6 @@ export function withLocalPersistEffect(options?: { onLocalStorageGetItem?: (item
     let storedItems = localStorage.getItem(node.key);
     if (storedItems != null) {
       storedItems = unStringfy(storedItems);
-      console.log("stored items:", storedItems);
       if(onLocalStorageGetItem) {
         // do whatever you want you with the data gotten from localStoraeg before it's set to the atom.
         // my use case is re-instantiating alarms for now since methods are not persisted in json strings :(

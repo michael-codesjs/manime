@@ -1,7 +1,7 @@
 import { AiOutlineArrowRight } from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom"
 import PlayButton from "../../components/buttons/play"
-import { Media } from "../../types/api"
+import { Media, MediaType } from "../../types/api"
 import { paths } from "../../utilities/constants"
 
 type Props = {
@@ -13,10 +13,12 @@ export function Anime({ media }: Props) {
   const navigate = useNavigate();
 
   const title = (media.title?.english || media.title?.romaji || media.title?.native)!;
+  const contentType = media.type === MediaType.Anime ? "episodes" : "chapters";
+  const content = media[contentType] || 0;
 
   return (
     <article
-      aria-label="popular-anime"
+      aria-label={`popular-${media.type}`}
       className={`
         group
         flex
@@ -47,7 +49,7 @@ export function Anime({ media }: Props) {
         style={{
           backgroundColor: media.coverImage?.color!
         }}
-        className={`cursor-pointer w-full md:w-20 min-w-[80px] h-40 md:h-[92px] rounded-lg relative overflow-hidden`}
+        className={`cursor-pointer w-full md:w-[72px] min-w-[72px] h-40 md:h-[90px] rounded-lg relative overflow-hidden`}
       >
         <img
           src={media.coverImage?.extraLarge!}
@@ -74,7 +76,7 @@ export function Anime({ media }: Props) {
           <PlayButton
             onClick={
               () => {
-                navigate(paths.anime + "/" + media.id + "#play")
+                navigate(`${media.type?.toLowerCase()}/`+ media.id + "#play")
               }
             }
           />
@@ -84,12 +86,12 @@ export function Anime({ media }: Props) {
       <div className="vstack space-y-2 w-full">
         <div className="vstack space-y-1 w-full">
           <Link
-            to={paths.anime + "/" + media.id}
+            to={media.type?.toLowerCase() + "/" + media.id}
             className={`
               block
               h-4
               w-full
-              text-[14px]
+              text-sm
               dark:text-gray-200
               text-gray-900
               overflow-hidden
@@ -111,8 +113,8 @@ export function Anime({ media }: Props) {
               overflow-hidden
               text-ellipsis
               whitespace-normal
-              h-8
-              min-h-[32px]
+              h-[46px]
+              min-h-[46px]
             `}
             dangerouslySetInnerHTML={{
               __html: media.description! || media.genres?.join(" ") || ""
@@ -136,7 +138,7 @@ export function Anime({ media }: Props) {
                 navigate(paths.anime + "/" + media.id + "#episodes")
               }
             }
-          > {media.episodes} episodes </p>
+          > {content} {contentType} </p>
 
           <button
             className={`

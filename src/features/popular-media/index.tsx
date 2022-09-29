@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useQuery } from "react-query";
-import { getPopularmedia } from "../../api/queries";
+import { getPopularMedia } from "../../api/queries";
 import SeeMoreButton from "../../components/buttons/see-more";
 import ScrollFade from "../../components/scroll-fade";
 import { MediaType } from "../../types/api";
@@ -8,38 +8,39 @@ import { Anime } from "./media";
 import Skeletons from "./skeletons";
 
 type PopularMediaProps = {
-  type: MediaType
-}
+  type: MediaType;
+};
 
 export function PopularMedia(props: PopularMediaProps) {
-
   const { type } = props;
 
-  const {
-    isLoading,
-    data,
-  } = useQuery(["popular-anime", { type, page: 1, perPage: 8 }], getPopularmedia, {
-    cacheTime: Infinity,
-    refetchOnMount: false,
-    refetchInterval: 0,
-    retry: 3,
-    retryOnMount: true,
-    retryDelay: 0,
-    refetchOnWindowFocus: false
-  });
+  const { isLoading, data } = useQuery(
+    [`popular-${type}`, { type, page: 1, perPage: 8 }],
+    getPopularMedia,
+    {
+      cacheTime: Infinity,
+      refetchOnMount: false,
+      refetchOnReconnect: true,
+      refetchInterval: 0,
+      retry: 3,
+      retryOnMount: true,
+      retryDelay: 0,
+      refetchOnWindowFocus: false,
+    }
+  );
 
   const memoizedContent = useMemo(() => {
-    return data && data.media!.map((media) => {
-      return (
-        <Anime key={media?.id.toString()} media={media!} />
-      )
-    })
+    return (
+      data &&
+      data.media!.map((media) => {
+        return <Anime key={media?.id.toString()} media={media!} />;
+      })
+    );
   }, [data]);
 
   const memoizedSkeletons = useMemo(() => <Skeletons />, []);
 
   return (
-
     <section
       className={`
         w-full
@@ -50,7 +51,6 @@ export function PopularMedia(props: PopularMediaProps) {
         md:space-y-0
       `}
     >
-
       <h2
         className={`
           w-full
@@ -61,7 +61,10 @@ export function PopularMedia(props: PopularMediaProps) {
           dark:text-gray-100
           capitalize
         `}
-      > Popular {type.toLowerCase()}</h2>
+      >
+        {" "}
+        Popular {type.toLowerCase()}
+      </h2>
 
       <div
         className={`
@@ -91,15 +94,14 @@ export function PopularMedia(props: PopularMediaProps) {
             md:space-y-3
           `}
         >
-
           <ScrollFade
             // scroll fade that is on the left for small screens
             height={"full"}
             width={7}
             direction={"right"}
             style={{
-              transform: "translateX(-" + (7 * 4) + "px)",
-              position: "absolute"
+              transform: "translateX(-" + 7 * 4 + "px)",
+              position: "absolute",
             }}
             className={"md:hidden"}
           />
@@ -123,7 +125,6 @@ export function PopularMedia(props: PopularMediaProps) {
           </div>
 
           <SeeMoreButton />
-
         </div>
 
         <ScrollFade
@@ -133,7 +134,7 @@ export function PopularMedia(props: PopularMediaProps) {
           direction={"left"}
           style={{
             right: 0,
-            bottom: 0
+            bottom: 0,
           }}
           className={"md:hidden"}
         />
@@ -144,13 +145,11 @@ export function PopularMedia(props: PopularMediaProps) {
           width={"full"}
           direction={"top"}
           style={{
-            bottom: "46px"
+            bottom: "46px",
           }}
           className={"hidden md:block"}
         />
-
       </div>
-
     </section>
-  )
+  );
 }

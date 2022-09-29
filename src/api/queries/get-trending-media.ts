@@ -3,7 +3,7 @@ import { QueryFunctionContext } from "react-query";
 import { PageResult } from "../../types";
 import { MediaType } from "../../types/api";
 
-type GetPopularMediaContext = [
+type GetTrendingMediaContext = [
   string,
   {
     type: MediaType,
@@ -12,32 +12,37 @@ type GetPopularMediaContext = [
   }
 ];
 
-export const getPopularMedia = async (context: QueryFunctionContext<GetPopularMediaContext>) => {
+export const getTrendingMedia = async (context: QueryFunctionContext<GetTrendingMediaContext>) => {
 
   const [, { type, page, perPage }] = context.queryKey;
 
   const GRAPHQL_QUERY = `
-  query($page: Int, $perPage: Int, $search: String) {
-    Page (page: $page, perPage: $perPage) {
-      media(search: $search, type: ${type}, sort: POPULARITY_DESC) {
-        id
-        title {
-          romaji
-          english
-          native
+    query($page: Int, $perPage: Int, $search: String) {
+      Page (page: $page, perPage: $perPage) {
+        pageInfo {
+          total
+          perPage
+          lastPage
+          hasNextPage
         }
-        description
-        coverImage {
-          extraLarge
-          color
+        media(search: $search, type: ${type}, sort: TRENDING_DESC) {
+          id
+          title {
+            romaji
+            english
+            native
+          }
+          status
+          bannerImage
+          coverImage {
+            extraLarge
+            color
+          }
+          type
         }
-        episodes
-        chapters
-        type
       }
     }
-  }
-`;
+  `;
 
   const result = await (
     API.graphql({
