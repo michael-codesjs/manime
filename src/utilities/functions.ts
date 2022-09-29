@@ -1,6 +1,6 @@
 import { Breakpoints } from "../types";
 import { Media } from "../types/api";
-import { breakpointKeys, breakpoints } from "./constants";
+import { breakpointKeys } from "./constants";
 
 export function changeColorMode(value: "light" | "dark" | null) {
   const root = document.documentElement;

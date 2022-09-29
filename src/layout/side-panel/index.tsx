@@ -15,7 +15,7 @@ export default function SidePanel() {
     startTransition(() => {
       setSidePanelDidRender(true);
     });
-  },[startTransition]);
+  },[startTransition, setSidePanelDidRender]);
 
   return (
     <aside

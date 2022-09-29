@@ -8,7 +8,6 @@ export default function HomeCarousel() {
 
   const {
     isLoading,
-    isError,
     data
   } = useQuery(["trending", { page: 1, perPage: 12 }], getTrending, {
     enabled: true,

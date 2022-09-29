@@ -26,7 +26,7 @@ export default function useBreakpoint(): Breakpoints {
       ranges[breakpoint as Breakpoints] = [min,max-1];
     });
     return ranges;
-  }, []);
+  }, [breakpointEntries]);
 
   const getBreakpoint = () => {
     let object:BreakpointRangeObject = { breakpoint: "base", range: [0, themeBreakpoints.sm] };
@@ -51,7 +51,7 @@ export default function useBreakpoint(): Breakpoints {
       setBreakpoint(getBreakpoint());
     }
 
-  },[width]);
+  },[width,breakpoint.range]);
 
   return breakpoint.breakpoint;
 
