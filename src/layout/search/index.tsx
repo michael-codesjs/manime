@@ -29,7 +29,7 @@ export default function Search() {
           dark:bg-gray-700
           border-2
           border-gray-100
-          dark:border-gray-900
+          dark:border-gray-700
           rounded-full
           focus-within:border-blue-600
           dark:focus-within:border-blue-600

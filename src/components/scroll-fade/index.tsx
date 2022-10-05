@@ -17,9 +17,9 @@ const ScrollFade:React.FC<ScrollFadeProps> = ({ height = 10, width = "full", dir
   width = typeof width === "number" ? (width*4)+"px" : width === "full" ? "100%" : width;
 
   const bgi = useColorModeValue(
-    `linear-gradient(to ${direction}, rgba(255,255,255,8), rgba(255,255,255,0))`,
+    `linear-gradient(to ${direction}, rgba(255,255,255,.8), rgba(255,255,255,0))`,
     useBreakpointValue({
-      base:  `linear-gradient(to ${direction}, rgba(0,0,0,.8), rgba(0,0,0,0))`,
+      base:  `linear-gradient(to ${direction}, rgb(17,24,39,.8), rgb(17,24,39, 0)`,
       sm: `linear-gradient(to ${direction}, rgb(17,24,39,.8), rgb(17,24,39,0))`
     })
   );

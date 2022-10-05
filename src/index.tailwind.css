@@ -14,9 +14,7 @@
 }
 
 #app {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
+  @apply w-screen h-screen grid;
   grid-template-areas:
     "header"
     "main"
@@ -24,7 +22,7 @@
     "side-panel"
   ;
   grid-template-columns: 100%;
-  grid-template-rows: min-content repeat(3, auto);
+  grid-template-rows: min-content repeat(2, auto) 0px;
 }
 
 

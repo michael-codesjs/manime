@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 export default function Skeletons() {
 
-  const skeletons = useMemo(() => Array(7).fill(null).map(() => {
+  const skeletons = useMemo(() => Array(5).fill(null).map(() => {
     return (
       <div className="group flex flex-col space-y-4 rounded-lg">
         <CustomSkeletons className="h-40" />

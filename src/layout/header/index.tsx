@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="border-b dark:border-b-0 sm:dark:border-2 sm:dark:border-gray-800 dark:bg-gray-900 md:dark:border-0 md:border-b-0"
+      className="border-b dark:border-gray-700 sm:dark:border-2 sm:dark:border-gray-800 dark:bg-gray-900 md:dark:border-0 md:border-b-0"
     >
       <div
         id="brand"

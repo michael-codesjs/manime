@@ -3,7 +3,7 @@ import { Skeletons as CustomSkeletons } from "../../components/skeletons";
 
 export default function Skeletons() {
 
-  const numberOfSkeletons = 8;
+  const numberOfSkeletons = 5;
   const skeletons = useMemo(() => {
     const skeletons = [];
     for (let x = 0; x < numberOfSkeletons; x++) {
