@@ -1,10 +1,5 @@
-import React from "react";
-import { AiFillFacebook, AiFillHeart } from "react-icons/ai";
 import { HiHeart } from "react-icons/hi";
-import { Link } from "react-router-dom";
-import { Logo } from "../../components/brand";
 
-/** Displays footer via a portal in the main component */
 export default function Footer() {
   return (
     <footer
