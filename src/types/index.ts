@@ -9,3 +9,5 @@ export type PageResult= {
   }
 };
 
+
+export type AuthenticationAction = "Login" | "Sign Up";

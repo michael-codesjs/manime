@@ -1,6 +1,11 @@
 import { useMemo } from "react";
-import { AiOutlineBook, AiOutlineClockCircle, AiOutlineDownload, AiOutlineGlobal, AiOutlineHome, AiOutlineSound } from "react-icons/ai";
-import { MdOndemandVideo, MdVideoLibrary } from "react-icons/md";
+import { AiOutlineClockCircle, AiOutlineDownload } from "react-icons/ai";
+import { BiHomeSmile } from "react-icons/bi";
+import { BsController } from "react-icons/bs";
+import { GoBook } from "react-icons/go";
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { MdOndemandVideo } from "react-icons/md";
+import { RiMovie2Line } from "react-icons/ri";
 import { useRecoilState } from "recoil";
 import { navigationIsOpenAtom } from "../../data/atoms";
 import { paths } from "../../utilities/constants";
@@ -16,14 +21,14 @@ export default function Navigation() {
     }
     return {
       menu: {
-        home: { address: paths.home, icon: <AiOutlineHome {...iconProps} /> },
-        community: { address: paths.community, icon: <AiOutlineGlobal {...iconProps} /> },
-        speakers: { address: paths.speakers, icon: <AiOutlineSound {...iconProps} /> }
+        home: { address: paths.home, icon: <BiHomeSmile {...iconProps} /> },
+        community: { address: paths.community, icon: <HiOutlineUserGroup {...iconProps} /> },
+        games: { address: paths.games, icon: <BsController {...iconProps} /> }
       },
 
       categories: {
-        anime: { address: paths.anime, icon: <MdVideoLibrary {...iconProps} /> },
-        manga: { address: paths.manga, icon: <AiOutlineBook {...iconProps} /> },
+        anime: { address: paths.anime, icon: <RiMovie2Line {...iconProps} /> },
+        manga: { address: paths.manga, icon: <GoBook {...iconProps} /> },
         movie: { address: paths.movies, icon: <MdOndemandVideo {...iconProps} /> }
       },
 

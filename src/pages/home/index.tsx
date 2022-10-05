@@ -3,10 +3,13 @@ import { PopularMedia } from "../../features/popular-media";
 import { MediaType } from "../../types/api";
 import Carousel from "./carousel";
 import TrendingMedia from "../../features/trending-media";
+import { FullLogo } from "../../components/brand";
+import Landing from "./landing";
 
 export default function Home() {
   return (
     <>
+      <Landing />
       <Carousel />
       <TrendingMedia type={MediaType.Anime} />
       <SidePanelable

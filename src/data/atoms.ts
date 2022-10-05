@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 import { withLocalPersistEffect } from "./atom-effects";
 import { changeColorMode } from "../utilities/functions";
+import { AuthenticationAction } from "../types";
 
 export const colorModeAtom = atom<"light" | "dark" | null>({
   key: "color-mode",

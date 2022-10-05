@@ -19,13 +19,8 @@ export default function Header() {
 
       <div
         id="extras"
-        className="flex space-x-4 p-6"
+        className="flex justify-end space-x-4 p-6"
       >
-        <div
-          id="header-portal-container"
-          className="w-full h-full"
-        // on larger screens use this via a portal for all your extra content like tabs.
-        />
         <div className="flex space-x-3">
           <ColorModeSwitcher />
           <HamburgerButton />

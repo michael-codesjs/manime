@@ -30,7 +30,7 @@ export default function NavigationItem({ name, address, icon }: NavigationItemPr
     <Link
       to={address}
       onClick={postLinkClick}
-      className={"hstack space-x-5 w-full items-center justify-center relative"}
+      className={"hstack space-x-4 w-full items-center justify-center relative"}
     >
       <p className={isActive ? "text-red-500 dark:text-red-500" : "text-gray-600 dark:text-gray-100"}> {icon} </p>
       <p className={"w-full text-[14px] capitalize text-inherit " + (isActive ? "font-semibold text-red-500 dark:text-red-500" : "font-normal dark:text-gray-100")}> {name} </p>
