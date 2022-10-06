@@ -3,7 +3,7 @@ import Feature from "./feature";
 
 export default function Landing() {
   return (
-    <div className="flex flex-col h-full items-center justify-center space-y-4">
+    <div className="flex flex-col items-center justify-center space-y-4">
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-center text-gray-800 dark:text-white max-w-[600px]">
         The next generation anime platform.
       </h1>
