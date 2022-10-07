@@ -17,7 +17,7 @@ export default function HomeCarousel() {
   const memoizedContent = useMemo(() => data && <Content data={data} />, [data]);
 
   return (
-    <section className="w-full">
+    <section className="w-full" id={"home-anime-carousel"}>
       { isLoading &&  memoizedSkeletons }
       { memoizedContent }
     </section>

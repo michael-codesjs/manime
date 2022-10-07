@@ -16,6 +16,10 @@ export function Anime({ media }: Props) {
   const contentType = media.type === MediaType.Anime ? "episodes" : "chapters";
   const content = media[contentType] || 0;
 
+  const navigateToMoreDetails = (suffix:string="") => {
+    navigate(paths.anime + "/" + media.id + suffix)
+  }
+
   return (
     <article
       aria-label={`popular-${media.type}`}
@@ -75,9 +79,7 @@ export function Anime({ media }: Props) {
         >
           <PlayButton
             onClick={
-              () => {
-                navigate(`${media.type?.toLowerCase()}/`+ media.id + "#play")
-              }
+              () => navigateToMoreDetails("#play")
             }
           />
         </div>
@@ -134,9 +136,7 @@ export function Anime({ media }: Props) {
               cursor-pointer
             `}
             onClick={
-              () => {
-                navigate(paths.anime + "/" + media.id + "#episodes")
-              }
+              () => navigateToMoreDetails("#episodes")
             }
           > {content} {contentType} </p>
 
@@ -155,6 +155,9 @@ export function Anime({ media }: Props) {
               group-hover:scale-110
               transition-all
             `}
+            onClick={
+              () => navigateToMoreDetails()
+            }
           >
 
             <AiOutlineArrowRight className="text-xs" />
