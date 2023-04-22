@@ -3,10 +3,9 @@ import { breakpoints as themeBreakpoints } from "../../utilities/constants";
 import { sortedEntries, withinRange } from "../../utilities/functions";
 import useWindowDimensions from "./use-window-dimensions";
 
-
 /*
  * Returns the current breakpoint
- * const breakpoint = useBreakpoint(); // may === "base" || "sm" || "md" and so on
+ * const breakpoint = useBreakpoint(); // maybe === "base" || "sm" || "md" and so on
  */
 
 type Breakpoints = keyof typeof themeBreakpoints;

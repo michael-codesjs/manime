@@ -6,7 +6,7 @@ import TrendingMedia from "../../features/trending-media";
 import { FullLogo } from "../../components/brand";
 import Landing from "./landing";
 
-export default function Home() {
+export const Home = () => {
   return (
     <>
       <Landing />

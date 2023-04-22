@@ -24,7 +24,8 @@
       "@layout/*": ["./layout/*"],
       "@components/*": ["./components/*"],
       "@hooks/*": ["./hooks/*"],
-      "@data/*": ["./data/*"]
+      "@data/*": ["./data/*"],
+      "@utilities/*": ["./utilities/*"]
     }
   },
   "ts-node": {
