@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
@@ -24,11 +25,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "craco start",
     "tailwind": "npx tailwindcss -i src/index.tailwind.css -o src/index.css --watch",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
     "generate-types": "graphql-codegen"
   },
   "eslintConfig": {
@@ -51,6 +52,7 @@
     "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-query": "^4.0.1",
+    "craco-alias": "^3.0.1",
     "graphql-codegen": "^0.4.0",
     "tailwindcss": "^3.1.8"
   }

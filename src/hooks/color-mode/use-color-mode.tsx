@@ -1,19 +1,19 @@
 import { useRecoilState } from "recoil";
 import { colorModeAtom } from "../../data/atoms";
 
+type UseColorMode = () => {
+  colorMode: "light" | "dark",
+  toggleColorMode: () => void
+}
 
-
-export default function useColorMode() {
+export const useColorMode: UseColorMode = () => {
 
   const [colorMode, setColorMode] = useRecoilState(colorModeAtom);
-
-  const toggleColorMode = () => {
-    setColorMode(value => value !== "light" ? "light" : "dark");
-  }
+  const toggleColorMode = () => setColorMode(value => value !== "light" ? "light" : "dark");
 
   return {
     colorMode,
     toggleColorMode
-  }
+  };
 
 }

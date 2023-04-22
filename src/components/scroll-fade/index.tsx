@@ -1,5 +1,4 @@
-import React from "react";
-import useColorModeValue from "../../hooks/color-mode/use-color-mode-value";
+import { useColorModeValue } from "../../hooks/color-mode/use-color-mode-value";
 import useBreakpointValue from "../../hooks/media/use-breakpoint-value";
 
 type ScrollFadeProps = {

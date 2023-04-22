@@ -91,6 +91,7 @@ main>* {
     grid-template-areas: "brand extras search";
     grid-template-columns: 1fr 1fr 2fr;
   }
+  
 }
 
 @media (min-width: 960px) {
@@ -107,4 +108,5 @@ main>* {
   header {
     grid-template-columns: 230px auto 320px;
   }
+
 }

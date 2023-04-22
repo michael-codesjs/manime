@@ -3,9 +3,9 @@ import { withLocalPersistEffect } from "./atom-effects";
 import { changeColorMode } from "../utilities/functions";
 import { AuthenticationAction } from "../types";
 
-export const colorModeAtom = atom<"light" | "dark" | null>({
+export const colorModeAtom = atom<"light" | "dark">({
   key: "color-mode",
-  default: null,
+  default: "light",
   effects: [
     withLocalPersistEffect({
       onLocalStorageGetItem: changeColorMode

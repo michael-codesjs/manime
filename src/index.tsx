@@ -1,6 +1,5 @@
-import * as React from "react"
 import * as ReactDOM from "react-dom/client"
-import App from "./App"
+import { App } from "./App"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
 import { BrowserRouter } from "react-router-dom"
@@ -8,7 +7,6 @@ import { RecoilRoot } from "recoil"
 import { Amplify } from "aws-amplify";
 import queryClient from "./api/client"
 import { QueryClientProvider } from "react-query"
-
 
 Amplify.configure({
 
@@ -24,8 +22,7 @@ Amplify.configure({
 
 
 const container = document.getElementById("root")
-if (!container) throw new Error('Failed to find the root element');
-const root = ReactDOM.createRoot(container)
+const root = ReactDOM.createRoot(container!);
 
 root.render(
   <QueryClientProvider client={queryClient}>
@@ -34,7 +31,7 @@ root.render(
         <App />
       </BrowserRouter>
     </RecoilRoot>
-  </QueryClientProvider>,
+  </QueryClientProvider>
 )
 
 // If you want your app to work offline and load faster, you can change

@@ -1,6 +1,5 @@
 import { Logo } from "./logo";
 
-
 export function FullLogo() {
   return (
     <div className="flex items-center justify-start min-w-[160px] space-x-[6px]">

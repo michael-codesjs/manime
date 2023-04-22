@@ -1,16 +1,11 @@
 import { useMemo } from "react";
-import useColorMode from "./use-color-mode";
+import { useColorMode } from "./use-color-mode";
 
+type UseColorModeValue = <LT = unknown, DT = unknown> (lightModeValue: LT, darkModeValue: DT) => LT | DT;
 
-
-export default function useColorModeValue<T = any>(lightModeValue: T, darkModeValue: T) {
+export const useColorModeValue: UseColorModeValue = (lightModeValue, darkModeValue) => {
 
   const { colorMode } = useColorMode();
-
-  const value = useMemo(() => {
-    return colorMode === "light" ? lightModeValue : darkModeValue; 
-  },[colorMode]);
-
-  return value;
+  return useMemo(() => colorMode === "light" ? lightModeValue : darkModeValue, [colorMode]);
 
 }
