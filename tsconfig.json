@@ -25,7 +25,9 @@
       "@components/*": ["./components/*"],
       "@hooks/*": ["./hooks/*"],
       "@data/*": ["./data/*"],
-      "@utilities/*": ["./utilities/*"]
+      "@utilities/*": ["./utilities/*"],
+      "@typings/*": ["./types/*"],
+      "@typings": ["./types/index.ts"]
     }
   },
   "ts-node": {

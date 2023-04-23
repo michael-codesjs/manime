@@ -1,25 +1,22 @@
-import { Breakpoints } from "../types";
-import { Media } from "../types/api";
+import { Breakpoints, ColorMode } from "@typings";
+import { Media } from "@typings/api";
 import { breakpointKeys } from "./constants";
 
-export function changeColorMode(value: "light" | "dark" | null) {
+export const changeColorMode = (value: ColorMode) => {
   const root = document.documentElement;
-  if(value === "dark") {
-    root.classList.add("dark");
-    root.classList.remove("light")
-  } else {
-    root.classList.remove("dark");
-    root.classList.add("light")
-  }
-  return value;
+  value === "dark" ? root.classList.add("dark") : root.classList.remove("dark");
 }
 
-export function unStringfy<T>(jsonString: string): T | string {
+export const isLiteralObject = (obj: any): obj is Object => {
+	return (!!obj) && (obj.constructor === Object);
+};
+
+export function unStringfy<T>(jsonString: string): T | null {
   try {
     const object = JSON.parse(jsonString) as T;
     return object;
-  } catch(error) {
-    return jsonString;
+  } catch (error) {
+    return null;
   }
 }
 
@@ -35,7 +32,7 @@ export const intersection = <T = any>(array1: Array<T>, array2: Array<T>) => arr
 
 export const getNearestBreakPointValue = <T = any>(values: Partial<Record<Breakpoints, T>>, breakpoint: Breakpoints): T | undefined => {
   /* Returns nearest breakpoint value if one does not exist for the desired breakpoint */
-  if(breakpoint in values) return values[breakpoint]!; // value exists :)
+  if (breakpoint in values) return values[breakpoint]!; // value exists :)
   let index = breakpointKeys.indexOf(breakpoint);
   while (index >= 0) { // look for nearest value below desired breakpoint
     const key = breakpointKeys[index];
@@ -48,13 +45,13 @@ export const getNearestBreakPointValue = <T = any>(values: Partial<Record<Breakp
 export const getCurrentSeason = () => {
 
   const now = new Date();
-  const month = now.getMonth() + 1;  // plus one because January is index 0
+  const month = now.getMonth() + 1;
 
   return (
     month > 3 && month < 6 ? 'SPRING' :
-    month > 6 && month < 9 ? 'SUMMER' :
-    month > 9 && month < 12 ? 'FALL' :
-    'WINTER' // default
+      month > 6 && month < 9 ? 'SUMMER' :
+        month > 9 && month < 12 ? 'FALL' :
+          'WINTER' // default
   );
 }
 

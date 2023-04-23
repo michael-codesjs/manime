@@ -1,6 +1,6 @@
 schema: "./schema.json" # GraphQL types (input file)
 generates:
-  ./graphql/generated.ts:
+  ./src/types/api.ts:
     plugins:
       - typescript
       - typescript-operations

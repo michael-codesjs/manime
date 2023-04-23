@@ -30,7 +30,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject",
-    "generate-types": "graphql-codegen"
+    "codegen": "graphql-codegen"
   },
   "eslintConfig": {
     "extends": "react-app"

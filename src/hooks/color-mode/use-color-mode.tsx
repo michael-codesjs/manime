@@ -1,15 +1,16 @@
 import { useRecoilState } from "recoil";
-import { colorModeAtom } from "../../data/atoms";
+import { colorModeAtom } from "@data/atoms";
+import { ColorMode } from "@typings";
 
 type UseColorMode = () => {
-  colorMode: "light" | "dark",
+  colorMode: ColorMode,
   toggleColorMode: () => void
 }
 
 export const useColorMode: UseColorMode = () => {
 
   const [colorMode, setColorMode] = useRecoilState(colorModeAtom);
-  const toggleColorMode = () => setColorMode(value => value !== "light" ? "light" : "dark");
+  const toggleColorMode = () => setColorMode((value: ColorMode) => value !== "light" ? "light" : "dark");
 
   return {
     colorMode,
