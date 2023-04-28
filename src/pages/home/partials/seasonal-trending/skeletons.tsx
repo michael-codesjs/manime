@@ -1,5 +1,4 @@
-import { Skeletons as BaseSkeletons } from "../../../components/skeletons";
-
+import { Skeletons as BaseSkeletons } from "@components/skeletons";
 
 export default function Skeletons() {
 

@@ -1,4 +1,4 @@
-import { Breakpoints, ColorMode } from "@typings";
+import { Breakpoints, ColorMode, Season } from "@typings";
 import { Media } from "@typings/api";
 import { breakpointKeys } from "./constants";
 
@@ -42,7 +42,7 @@ export const getNearestBreakPointValue = <T = any>(values: Partial<Record<Breakp
   return values[breakpointKeys[index] as Breakpoints] as T;
 }
 
-export const getCurrentSeason = () => {
+export const getCurrentSeason = (): Season => {
 
   const now = new Date();
   const month = now.getMonth() + 1;

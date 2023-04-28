@@ -62,7 +62,6 @@ export function PopularMedia(props: PopularMediaProps) {
           capitalize
         `}
       >
-        {" "}
         Popular {type.toLowerCase()}
       </h2>
 

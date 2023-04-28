@@ -1,0 +1,28 @@
+{
+    "media": {
+        "id": true,
+        "title": {
+            "romaji": true,
+            "english": true,
+            "native": true
+        },
+        "status": true,
+        "averageScore": true,
+        "coverImage": {
+            "extraLarge": true,
+            "color": true
+        },
+        "episodes": true,
+        "characters": {
+            "__args": {
+                "perPage": 5
+            },
+            "nodes": {
+                "id": true,
+                "image": {
+                    "medium": true
+                }
+            }
+        }
+    }
+}

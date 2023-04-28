@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
-import PlayButton from "../../../components/buttons/play"
-import { Media } from "../../../types/api"
-import { paths } from "../../../utilities/constants"
+import PlayButton from "@components/buttons/play"
+import { Media } from "@typings/api"
+import { paths } from "@utilities/constants"
 
 type Props = {
   media: Media,
   className: string
-}
+};
 
 export function Anime({ media, className }: Props) {
 
@@ -17,10 +17,8 @@ export function Anime({ media, className }: Props) {
   return (
     <article
       aria-label="anime-intro-grid-item"
-      className={"group vstack "+className}
+      className={"group vstack " + className}
     >
-
-      {/* anime cover image */}
       <div
         aria-label="anime-cover"
         style={{

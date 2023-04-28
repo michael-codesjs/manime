@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import { HiChevronLeft, HiChevronRight, HiStar } from "react-icons/hi";
 import { UseQueryResult } from "react-query";
-import PlayButton from "../../../components/buttons/play";
-import useBreakpointValue from "../../../hooks/media/use-breakpoint-value";
-import { Page } from "../../../types/api";
+import PlayButton from "@components/buttons/play";
+import useBreakpointValue from "@hooks/media/use-breakpoint-value";
+import { Page } from "@typings/api";
 
 type QueryResult = UseQueryResult<Page, any>;
 
